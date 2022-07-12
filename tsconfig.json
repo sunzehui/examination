@@ -8,6 +8,7 @@
     "allowSyntheticDefaultImports": true,
     "target": "es2017",
     "sourceMap": true,
+    "allowJs": true,
     "outDir": "./dist",
     "baseUrl": "./",
     "incremental": true,
@@ -16,6 +17,10 @@
     "noImplicitAny": false,
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
-    "noFallthroughCasesInSwitch": false
+    "noFallthroughCasesInSwitch": false,
+    "paths":{ 
+      "@/share/*":["../*"],
+      "@/*": ["src/*"],
+    }
   }
 }
