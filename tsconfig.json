@@ -18,9 +18,10 @@
     "strictBindCallApply": false,
     "forceConsistentCasingInFileNames": false,
     "noFallthroughCasesInSwitch": false,
-    "paths":{ 
-      "@/share/*":["../*"],
-      "@/*": ["src/*"],
+    "paths": {
+      "@/*": [
+        "src/*"
+      ]
     }
   }
 }

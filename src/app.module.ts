@@ -3,10 +3,12 @@ import connectionCfg from './config/database';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from '@/common/user/user.module';
-import { AuthModule } from './common/auth/auth.module';
+import { UserModule } from '@/common/module/user/user.module';
+import { AuthModule } from './common/module/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
+import { ClassesModule } from './classes/classes.module';
 import configuration from './config/configuration';
+
 @Module({
   imports: [
     TypeOrmModule.forRoot(connectionCfg),
@@ -16,8 +18,24 @@ import configuration from './config/configuration';
     }),
     UserModule,
     AuthModule,
+    ClassesModule,
   ],
   controllers: [AppController],
   providers: [AppService],
 })
 export class AppModule {}
+
+export const testModule = (entities) => ({
+  imports: [
+    TypeOrmModule.forRoot({ ...connectionCfg, entities }),
+    ConfigModule.forRoot({
+      isGlobal: true,
+      load: [configuration],
+    }),
+    UserModule,
+    AuthModule,
+    ClassesModule,
+  ],
+  controllers: [AppController],
+  providers: [AppService],
+});
