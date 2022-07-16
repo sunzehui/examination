@@ -28,7 +28,7 @@ export class ClassesService {
     });
   }
 
-  findStudent(id: string) {
+  findStudent(id: number) {
     return this.repo.find({
       where: { id },
       join: {
@@ -41,7 +41,7 @@ export class ClassesService {
     });
   }
 
-  async addStudent(id: string, classmateDto: ClassmateDto[]) {
+  async addStudent(id: number, classmateDto: ClassmateDto[]) {
     const classesEntity = await this.repo.findOneBy({ id });
     classesEntity.users = _map(classmateDto, (u) => {
       const userEntity = new User();

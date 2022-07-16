@@ -14,7 +14,7 @@ import { ExamPaper } from '@/exam-paper/entities/exam-paper.entity';
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ unique: true })
   username: string;
@@ -36,7 +36,6 @@ export class User {
   @Column({
     type: 'int',
     default: Role.student,
-    enum: Role,
   })
   user_type: number;
 

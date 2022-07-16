@@ -8,6 +8,7 @@ import { AuthModule } from './common/module/auth/auth.module';
 import { ConfigModule } from '@nestjs/config';
 import { ClassesModule } from './classes/classes.module';
 import { ExamPaperModule } from './exam-paper/exam-paper.module';
+import { QuestionModule } from './question/question.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -21,6 +22,7 @@ import configuration from './config/configuration';
     AuthModule,
     ClassesModule,
     ExamPaperModule,
+    QuestionModule,
   ],
   controllers: [AppController],
   providers: [AppService],
@@ -38,6 +40,7 @@ export const testModule = (entities) => ({
     AuthModule,
     ExamPaperModule,
     ClassesModule,
+    QuestionModule,
   ],
   controllers: [AppController],
   providers: [AppService],

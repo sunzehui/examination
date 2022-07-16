@@ -40,7 +40,7 @@ export class ClassesController {
   @Get(':id/student')
   @Auth(Role.teacher)
   async findOneStu(@Param('id') id: string) {
-    const result = await this.classesService.findStudent(id);
+    const result = await this.classesService.findStudent(+id);
     return ResultData.ok(result);
   }
 
@@ -51,7 +51,7 @@ export class ClassesController {
     @Param('id') id: string,
     @Body() classmateDto: ClassmateDto[],
   ) {
-    const result = await this.classesService.addStudent(id, classmateDto);
+    const result = await this.classesService.addStudent(+id, classmateDto);
     return ResultData.ok(result);
   }
 

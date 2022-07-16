@@ -11,7 +11,7 @@ import { User } from '@/common/module/user/entities/user.entity';
 @Entity()
 export class Classes {
   @PrimaryGeneratedColumn()
-  id: string;
+  id: number;
 
   @Column({ default: '未命名班级' })
   name: string;

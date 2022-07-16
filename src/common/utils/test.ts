@@ -5,6 +5,11 @@ import { User } from '@/common/module/user/entities/user.entity';
 import { Classes } from '@/classes/entities/classes.entity';
 import { INestApplication } from '@nestjs/common';
 import { ExamPaper } from '@/exam-paper/entities/exam-paper.entity';
+import {
+  ChoiceQ,
+  FillBlankQ,
+  Question,
+} from '@/question/entities/question.entity';
 
 let app: INestApplication = null;
 let module_inner: TestingModule = null;
@@ -12,7 +17,7 @@ let module_inner: TestingModule = null;
 export const getApp = async (): Promise<[INestApplication, TestingModule]> => {
   if (app && module) return [app, module_inner];
   module_inner = await Test.createTestingModule(
-    testModule([User, Classes, ExamPaper]),
+    testModule([User, Classes, ExamPaper, ChoiceQ, FillBlankQ, Question]),
   ).compile();
   app = module_inner.createNestApplication();
   await app.init();

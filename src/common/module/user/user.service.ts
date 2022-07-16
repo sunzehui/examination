@@ -42,4 +42,13 @@ export class UserService {
   getAllStudent() {
     return this.repository.findBy({ user_type: Role.student });
   }
+
+  setUserType(id: number, toType: Role) {
+    return this.repository.update(
+      { id },
+      {
+        user_type: toType,
+      },
+    );
+  }
 }
