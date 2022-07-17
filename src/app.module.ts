@@ -9,6 +9,7 @@ import { ConfigModule } from '@nestjs/config';
 import { ClassesModule } from './classes/classes.module';
 import { ExamPaperModule } from './exam-paper/exam-paper.module';
 import { QuestionModule } from './question/question.module';
+import { ExamRoomModule } from './exam-room/exam-room.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -23,6 +24,7 @@ import configuration from './config/configuration';
     ClassesModule,
     ExamPaperModule,
     QuestionModule,
+    ExamRoomModule,
   ],
   controllers: [AppController],
   providers: [AppService],
@@ -41,6 +43,7 @@ export const testModule = (entities) => ({
     ExamPaperModule,
     ClassesModule,
     QuestionModule,
+    ExamRoomModule,
   ],
   controllers: [AppController],
   providers: [AppService],

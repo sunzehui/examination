@@ -31,6 +31,7 @@
     "@nestjs/typeorm": "^9.0.0",
     "bcryptjs": "^2.4.3",
     "class-validator": "^0.13.2",
+    "dayjs": "^1.11.3",
     "lodash": "^4.17.21",
     "mysql": "^2.18.1",
     "passport-jwt": "^4.0.0",
@@ -38,8 +39,7 @@
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
     "rxjs": "^7.2.0",
-    "typeorm": "^0.3.7",
-    "typeorm-polymorphic": "^0.0.10"
+    "typeorm": "^0.3.7"
   },
   "devDependencies": {
     "@nestjs/cli": "^9.0.0",
@@ -75,7 +75,7 @@
     "moduleNameMapper": {
       "@/(.*)$": "<rootDir>/$1"
     },
-    "testRegex": "exam-.*\\.spec\\.ts$",
+    "testRegex": "question.*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },

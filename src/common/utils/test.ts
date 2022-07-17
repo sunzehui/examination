@@ -10,6 +10,7 @@ import {
   FillBlankQ,
   Question,
 } from '@/question/entities/question.entity';
+import { ExamRoom } from '@/exam-room/entities/exam-room.entity';
 
 let app: INestApplication = null;
 let module_inner: TestingModule = null;
@@ -17,7 +18,15 @@ let module_inner: TestingModule = null;
 export const getApp = async (): Promise<[INestApplication, TestingModule]> => {
   if (app && module) return [app, module_inner];
   module_inner = await Test.createTestingModule(
-    testModule([User, Classes, ExamPaper, ChoiceQ, FillBlankQ, Question]),
+    testModule([
+      User,
+      Classes,
+      ExamPaper,
+      ChoiceQ,
+      FillBlankQ,
+      Question,
+      ExamRoom,
+    ]),
   ).compile();
   app = module_inner.createNestApplication();
   await app.init();

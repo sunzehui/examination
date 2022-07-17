@@ -4,11 +4,13 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { User } from '@/common/module/user/entities/user.entity';
+import { ExamRoom } from '@/exam-room/entities/exam-room.entity';
 
-@Entity()
+@Entity('classes')
 export class Classes {
   @PrimaryGeneratedColumn()
   id: number;
@@ -27,4 +29,7 @@ export class Classes {
     name: 'user_classes',
   })
   users: User[];
+
+  @OneToMany(() => ExamRoom, (e) => e.for_classes)
+  has_exam: ExamRoom[];
 }
