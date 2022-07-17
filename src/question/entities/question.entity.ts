@@ -1,11 +1,13 @@
 import {
   Column,
   Entity,
+  ManyToMany,
   ManyToOne,
   OneToMany,
   PrimaryGeneratedColumn,
   Relation,
 } from 'typeorm';
+import { ExamPaper } from '@/exam-paper/entities/exam-paper.entity';
 
 @Entity('question')
 export class Question {
@@ -28,6 +30,9 @@ export class Question {
   choice: Relation<ChoiceQ>[];
   @OneToMany(() => FillBlankQ, (f) => f.question)
   fill_blank: Relation<FillBlankQ>[];
+
+  @ManyToMany(() => ExamPaper, (e) => e.has_Q)
+  in_exam_paper: ExamPaper[];
 }
 
 @Entity('choice')
@@ -41,7 +46,7 @@ export class ChoiceQ {
   @Column({ type: 'char', length: 255, default: '' })
   content: string;
 
-  @Column({ type: 'boolean', default: false })
+  @Column({ type: 'boolean', default: false, select: false })
   is_answer: boolean;
 }
 
@@ -56,6 +61,6 @@ export class FillBlankQ {
   @Column({ type: 'char', nullable: false, length: 255 })
   pos: string;
 
-  @Column({ type: 'char', nullable: false, length: 255 })
+  @Column({ type: 'char', nullable: false, length: 255, select: false })
   content: string;
 }

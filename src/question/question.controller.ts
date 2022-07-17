@@ -8,7 +8,7 @@ import {
   HttpCode,
 } from '@nestjs/common';
 import { QuestionService } from './question.service';
-import { CreateQuestionDTO } from './dto/create-question.dto';
+import { QuestionDto } from './dto/question.dto';
 import { ResultData } from '@/common/utils/result';
 import { Auth } from '@/common/module/auth/guards/auth.guard';
 import { Role } from '@/common/module/auth/decorator/role.decorator';
@@ -20,7 +20,7 @@ export class QuestionController {
   @Post()
   @HttpCode(200)
   @Auth(Role.teacher)
-  async create(@Body() createQuestionDto: CreateQuestionDTO[]) {
+  async create(@Body() createQuestionDto: QuestionDto[]) {
     const result = await this.questionService.create(createQuestionDto);
     return ResultData.ok(result);
   }

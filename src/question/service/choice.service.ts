@@ -1,5 +1,5 @@
 import { Injectable } from '@nestjs/common';
-import { Choice } from '@/question/dto/create-question.dto';
+import { Choice } from '@/question/dto/question.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ChoiceQ } from '@/question/entities/question.entity';
 import { Repository } from 'typeorm';

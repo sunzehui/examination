@@ -18,7 +18,7 @@ export class Choice {
   resolution: string;
 }
 
-export type CreateQuestionDTO = (
+export type QuestionDto = (
   | {
       type: QType.choice;
       answer: Choice[];

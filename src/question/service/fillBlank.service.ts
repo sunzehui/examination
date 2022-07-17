@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { FillBlankQ } from '@/question/entities/question.entity';
-import { FillBlank } from '@/question/dto/create-question.dto';
+import { FillBlank } from '@/question/dto/question.dto';
 
 @Injectable()
 export class FillBlankService {

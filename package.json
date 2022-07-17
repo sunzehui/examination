@@ -75,7 +75,7 @@
     "moduleNameMapper": {
       "@/(.*)$": "<rootDir>/$1"
     },
-    "testRegex": "question.*\\.spec\\.ts$",
+    "testRegex": "exam-.*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },
