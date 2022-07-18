@@ -11,6 +11,7 @@ import {
   Question,
 } from '@/question/entities/question.entity';
 import { ExamRoom } from '@/exam-room/entities/exam-room.entity';
+import { ExamRecord } from '@/exam-record/entities/exam-record.entity';
 
 let app: INestApplication = null;
 let module_inner: TestingModule = null;
@@ -26,6 +27,7 @@ export const getApp = async (): Promise<[INestApplication, TestingModule]> => {
       FillBlankQ,
       Question,
       ExamRoom,
+      ExamRecord,
     ]),
   ).compile();
   app = module_inner.createNestApplication();

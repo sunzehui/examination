@@ -10,6 +10,7 @@ import { ClassesModule } from './classes/classes.module';
 import { ExamPaperModule } from './exam-paper/exam-paper.module';
 import { QuestionModule } from './question/question.module';
 import { ExamRoomModule } from './exam-room/exam-room.module';
+import { ExamRecordModule } from './exam-record/exam-record.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -25,6 +26,7 @@ import configuration from './config/configuration';
     ExamPaperModule,
     QuestionModule,
     ExamRoomModule,
+    ExamRecordModule,
   ],
   controllers: [AppController],
   providers: [AppService],

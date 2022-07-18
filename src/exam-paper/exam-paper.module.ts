@@ -12,11 +12,13 @@ import {
 import { QuestionService } from '@/question/question.service';
 import { ChoiceService } from '@/question/service/choice.service';
 import { FillBlankService } from '@/question/service/fillBlank.service';
+import { ExamRecordModule } from '@/exam-record/exam-record.module';
 
 @Module({
   imports: [
     TypeOrmModule.forFeature([ExamPaper, Question, ChoiceQ, FillBlankQ]),
     QuestionModule,
+    ExamRecordModule,
   ],
   controllers: [ExamPaperController],
   providers: [

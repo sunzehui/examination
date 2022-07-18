@@ -16,10 +16,14 @@ import { Auth } from '@/common/module/auth/guards/auth.guard';
 import { Role } from '@/common/module/auth/decorator/role.decorator';
 import { User } from '@/common/module/user/decorator/user.decorator';
 import { ExamineesPaperDto } from '@/exam-paper/dto/examinees-paper.dto';
+import { ExamRecordService } from '@/exam-record/exam-record.service';
 
 @Controller('exam-paper')
 export class ExamPaperController {
-  constructor(private readonly examPaperService: ExamPaperService) {}
+  constructor(
+    private readonly examPaperService: ExamPaperService,
+    private readonly examRecordService: ExamRecordService,
+  ) {}
 
   @Post()
   @HttpCode(200)
@@ -46,14 +50,26 @@ export class ExamPaperController {
   }
 
   @Post(':id/submit')
+  @Auth(Role.student)
   @HttpCode(200)
   async settlement(
     @Param('id') id: string,
+    @User('id') userId: string,
+    @Query('room_id') exam_room_id: string,
     @Body() examineesPaperDto: ExamineesPaperDto[],
   ) {
     const result = await this.examPaperService.settlement(
       +id,
       examineesPaperDto,
+    );
+    console.log(exam_room_id);
+    await this.examRecordService.create(
+      {
+        exam_paper_id: +id,
+        answer: JSON.stringify(examineesPaperDto),
+        exam_room_id: +exam_room_id,
+      },
+      userId,
     );
     return ResultData.ok(result);
   }
