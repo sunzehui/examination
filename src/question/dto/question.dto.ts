@@ -14,20 +14,40 @@ export class FillBlank {
 
 export class Choice {
   content: string;
+  @IsNotEmpty()
   is_answer: boolean;
   resolution: string;
 }
 
-export type QuestionDto = (
-  | {
-      type: QType.choice;
-      answer: Choice[];
-    }
-  | {
-      type: QType.fill_blank;
-      answer: FillBlank[];
-    }
-) & {
+export class BaseQuestion {
+  @IsNotEmpty()
   content: string;
   resolution: string;
-};
+  id?: number;
+}
+
+export class ChoiceQuestion extends BaseQuestion {
+  type: QType.choice;
+  answer: Choice[];
+}
+
+export class FillBlankQuestion extends BaseQuestion {
+  type: QType.fill_blank;
+  answer: FillBlank[];
+}
+
+export type QuestionDto = ChoiceQuestion | FillBlankQuestion;
+// export type QuestionDto = (
+//   | {
+//       type: QType.choice;
+//       answer: Choice[];
+//     }
+//   | {
+//       type: QType.fill_blank;
+//       answer: FillBlank[];
+//     }
+// ) & {
+//   content: string;
+//   resolution: string;
+//   id?: number;
+// };

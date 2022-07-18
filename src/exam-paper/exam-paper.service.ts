@@ -5,6 +5,7 @@ import { ExamPaper } from '@/exam-paper/entities/exam-paper.entity';
 import { Repository } from 'typeorm';
 import { Question } from '@/question/entities/question.entity';
 import { QuestionService } from '@/question/question.service';
+import { ExamineesPaperDto } from '@/exam-paper/dto/examinees-paper.dto';
 
 @Injectable()
 export class ExamPaperService {
@@ -29,14 +30,14 @@ export class ExamPaperService {
   }
 
   //查询时关联所有问题
-  async findOne(id: number) {
+  async findOne(id: number, showAnswer = false) {
     const paperEntity = await this.repo.findOne({
       where: { id },
       relations: ['has_Q'],
     });
-    const allQEntities = await this.questionService.findIn(
-      paperEntity.has_Q.map((q) => q.id),
-    );
+    const ids = paperEntity.has_Q.map((q) => q.id);
+    const allQEntities = await this.questionService.findIn(ids, showAnswer);
+
     return {
       id: paperEntity.id,
       name: paperEntity.name,
@@ -46,6 +47,16 @@ export class ExamPaperService {
 
   update(id: number) {
     return `This action updates a #${id} examPaper`;
+  }
+
+  async settlement(id: number, examineesPaperDto: ExamineesPaperDto[]) {
+    //  get all q_id 's answer
+    const examPaperEntity = await this.findOne(id, true);
+    //  put in questionService(answer, dto)
+    return await this.questionService.checkQuestionAnswer(
+      examPaperEntity.question,
+      examineesPaperDto,
+    );
   }
 
   async addQuestion(eId: number, qId: number) {

@@ -43,7 +43,9 @@ export class ChoiceQ {
   @ManyToOne(() => Question, (q) => q.choice)
   question: Question;
 
-  @Column({ type: 'char', length: 255, default: '' })
+  @Column({ type: 'int', default: 2 })
+  score: number;
+  @Column({ type: 'varchar', length: 255, default: '' })
   content: string;
 
   @Column({ type: 'boolean', default: false, select: false })
@@ -58,9 +60,12 @@ export class FillBlankQ {
   @ManyToOne(() => Question, (f) => f.fill_blank)
   question: Question;
 
-  @Column({ type: 'char', nullable: false, length: 255 })
+  @Column({ type: 'varchar', nullable: false, length: 255 })
   pos: string;
 
-  @Column({ type: 'char', nullable: false, length: 255, select: false })
+  @Column({ type: 'int', default: 2 })
+  score: number;
+
+  @Column({ type: 'varchar', nullable: false, length: 255, select: false })
   content: string;
 }

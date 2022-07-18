@@ -9,15 +9,15 @@ const QList = [
     answer: [
       {
         content: 'a',
-        answer: false,
+        is_answer: false,
       },
       {
         content: 'haha',
-        answer: true,
+        is_answer: true,
       },
       {
         content: 'xixix',
-        answer: false,
+        is_answer: false,
       },
     ],
   },

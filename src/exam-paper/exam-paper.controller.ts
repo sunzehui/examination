@@ -11,11 +11,11 @@ import {
 } from '@nestjs/common';
 import { ExamPaperService } from './exam-paper.service';
 import { CreateExamPaperDto } from './dto/create-exam-paper.dto';
-import { UpdateExamPaperDto } from './dto/update-exam-paper.dto';
 import { ResultData } from '@/common/utils/result';
 import { Auth } from '@/common/module/auth/guards/auth.guard';
 import { Role } from '@/common/module/auth/decorator/role.decorator';
 import { User } from '@/common/module/user/decorator/user.decorator';
+import { ExamineesPaperDto } from '@/exam-paper/dto/examinees-paper.dto';
 
 @Controller('exam-paper')
 export class ExamPaperController {
@@ -45,12 +45,17 @@ export class ExamPaperController {
     return ResultData.ok(result);
   }
 
-  @Patch(':id')
-  update(
+  @Post(':id/submit')
+  @HttpCode(200)
+  async settlement(
     @Param('id') id: string,
-    @Body() updateExamPaperDto: UpdateExamPaperDto,
+    @Body() examineesPaperDto: ExamineesPaperDto[],
   ) {
-    return this.examPaperService.update(+id, updateExamPaperDto);
+    const result = await this.examPaperService.settlement(
+      +id,
+      examineesPaperDto,
+    );
+    return ResultData.ok(result);
   }
 
   @Patch(':id/question')

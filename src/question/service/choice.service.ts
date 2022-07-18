@@ -17,7 +17,7 @@ export class ChoiceService {
         const newChoiceEntity = new ChoiceQ();
         newChoiceEntity.content = choice.content;
         newChoiceEntity.is_answer = choice.is_answer;
-        return this.repo.save(newChoiceEntity);
+        return this.repo.save(this.repo.create(newChoiceEntity));
       }),
     );
   }

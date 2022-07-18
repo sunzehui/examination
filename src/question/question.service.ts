@@ -1,5 +1,5 @@
 import { HttpException, Injectable } from '@nestjs/common';
-import { QuestionDto, QType } from './dto/question.dto';
+import { QType, QuestionDto } from './dto/question.dto';
 import { ChoiceService } from '@/question/service/choice.service';
 import { FillBlankService } from '@/question/service/fillBlank.service';
 import {
@@ -7,9 +7,11 @@ import {
   Question as QEntity,
 } from '@/question/entities/question.entity';
 import { InjectRepository } from '@nestjs/typeorm';
-import { In, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import * as _pick from 'lodash/pick';
 import * as _isEmpty from 'lodash/isEmpty';
+import { ExamineesPaperDto } from '@/exam-paper/dto/examinees-paper.dto';
+import * as _keyBy from 'lodash/keyBy';
 
 @Injectable()
 export class QuestionService {
@@ -27,7 +29,7 @@ export class QuestionService {
     return await this.repo.save(qEntities);
   }
 
-  async createQEntity(fcEntity: QuestionDto): Promise<Question> {
+  private async createQEntity(fcEntity: QuestionDto): Promise<Question> {
     const qEntity = new QEntity();
     let answerEntity = null;
     switch (fcEntity.type) {
@@ -53,14 +55,14 @@ export class QuestionService {
     return `This action returns all question`;
   }
 
-  sanitizeQEntity(_qEntity): QuestionDto {
+  private static sanitizeQEntity(_qEntity): QuestionDto {
     const qEntity = _pick(_qEntity, [
       'id',
       'content',
       'resolution',
       'create_time',
-      'q_type',
     ]);
+    qEntity.type = _qEntity.q_type;
     switch (_qEntity.q_type) {
       case QType.choice:
         qEntity.answer = _qEntity.choice;
@@ -75,29 +77,102 @@ export class QuestionService {
     return qEntity;
   }
 
+  // async findOneWithAnswer(ids: number[]) {
+  //   // const allQEntities = await this.repo
+  //   //   .createQueryBuilder('q')
+  //   //   .where('q.id in (:ids)', { ids })
+  //   //   .leftJoinAndMapMany(
+  //   //     'q.choice',
+  //   //     'choice',
+  //   //     'choice',
+  //   //     'choice.questionId = q.id',
+  //   //   )
+  //   //   .leftJoinAndMapMany(
+  //   //     'q.fill_blank',
+  //   //     'fill_blank',
+  //   //     'fill_blank',
+  //   //     'fill_blank.questionId = q.id',
+  //   //   )
+  //   //   .getRawMany();
+  //
+  //   return {
+  //     question: allQEntities,
+  //   };
+  // }
+
   async findOne(id: number): Promise<QuestionDto> {
     const qEntity = await this.repo.findOne({
       where: { id },
       relations: ['choice', 'fill_blank'],
     });
     if (!qEntity) return null;
-    return this.sanitizeQEntity(qEntity);
+    return QuestionService.sanitizeQEntity(qEntity);
   }
 
-  async findIn(ids: number[]): Promise<QuestionDto[]> {
-    console.log('id', ids);
-    const qEntities = await this.repo.find({
-      where: { id: In(ids) },
-      relations: ['choice', 'fill_blank'],
-    });
+  async findIn(ids: number[], showAnswer = false): Promise<QuestionDto[]> {
+    // const qEntities = await this.repo.find({
+    //   where: { id: In(ids) },
+    //   relations: ['choice', 'fill_blank'],
+    // });
+    const qb = this.repo
+      .createQueryBuilder('q')
+      .where('q.id in (:ids)', { ids })
+      .leftJoinAndSelect('q.choice', 'choice')
+      .leftJoinAndSelect('q.fill_blank', 'fill_blank');
+
+    if (showAnswer) {
+      qb.addSelect('choice.is_answer').addSelect('fill_blank.content');
+    }
+    const qEntities = await qb.getMany();
     if (_isEmpty(qEntities)) return [];
-    return qEntities.map((q) => this.sanitizeQEntity(q));
+    return qEntities.map((q) => QuestionService.sanitizeQEntity(q));
   }
 
-  //
-  // update(id: number, updateQuestionDto: UpdateQuestionDto) {
-  //   return `This action updates a #${id} question`;
-  // }
+  async checkQuestionAnswer(
+    qDtoList: QuestionDto[],
+    eDtoList: ExamineesPaperDto[],
+  ) {
+    const answerChoice = qDtoList.filter((value) => value.type == QType.choice);
+    const answerFB = qDtoList.filter((value) => value.type == QType.fill_blank);
+
+    function checkQ(item) {
+      let isAnswerTruly = false;
+      let result = {};
+      switch (item.type) {
+        case QType.choice:
+          const standChoice = answerChoice.find((q) => q.id === item.qId);
+          const choiceAnswer = _keyBy(standChoice.answer, 'id');
+          console.log('ca', choiceAnswer);
+          isAnswerTruly = choiceAnswer[item.answer].is_answer;
+          result = {
+            standAnswer: standChoice,
+            userAnswer: item.answer,
+            isAnswerTruly,
+            type: QType.choice,
+          };
+          break;
+        case QType.fill_blank:
+          const standFB = answerFB.find((q) => q.id === item.qId);
+          console.log(standFB.answer);
+          const fBAnswer = _keyBy(standFB.answer, 'id');
+          const userAnswer = item.answer.map((a) => ({
+            isAnswerTruly: fBAnswer[a.id].content == a.content.trim(),
+            pos: a.pos,
+            content: a.content,
+          }));
+
+          result = {
+            standAnswer: standFB.answer,
+            userAnswer,
+            type: QType.fill_blank,
+          };
+          break;
+      }
+      return result;
+    }
+
+    return eDtoList.map(checkQ);
+  }
 
   remove(id: number) {
     return `This action removes a #${id} question`;
