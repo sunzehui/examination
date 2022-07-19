@@ -35,7 +35,7 @@ export class ExamRoomController {
   @Get()
   @Auth(Role.teacher, Role.student)
   async findAll(@Query() query, @User() user) {
-    const result = await this.examRoomService.findAll(query, user.id);
+    const result = await this.examRoomService.findAll(user.id, query);
     return ResultData.ok(result);
   }
 

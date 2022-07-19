@@ -11,6 +11,7 @@ import { ExamPaperModule } from './exam-paper/exam-paper.module';
 import { QuestionModule } from './question/question.module';
 import { ExamRoomModule } from './exam-room/exam-room.module';
 import { ExamRecordModule } from './exam-record/exam-record.module';
+import { ExamClockModule } from './exam-clock/exam-clock.module';
 import configuration from './config/configuration';
 
 @Module({
@@ -27,6 +28,7 @@ import configuration from './config/configuration';
     QuestionModule,
     ExamRoomModule,
     ExamRecordModule,
+    ExamClockModule,
   ],
   controllers: [AppController],
   providers: [AppService],
@@ -46,6 +48,7 @@ export const testModule = (entities) => ({
     ClassesModule,
     QuestionModule,
     ExamRoomModule,
+    ExamClockModule,
   ],
   controllers: [AppController],
   providers: [AppService],

@@ -31,9 +31,6 @@ export class ExamRoom {
   @JoinColumn()
   use_exam_paper: ExamPaper;
 
-  @Column({ type: 'int', default: ExamStatus.wait })
-  status: ExamStatus;
-
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   create_time: string;
 

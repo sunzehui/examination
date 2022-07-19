@@ -10,5 +10,6 @@ import { User } from '@/common/module/user/entities/user.entity';
   imports: [TypeOrmModule.forFeature([ExamRoom, Classes, User])],
   controllers: [ExamRoomController],
   providers: [ExamRoomService],
+  exports: [ExamRoomService],
 })
 export class ExamRoomModule {}

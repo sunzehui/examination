@@ -51,4 +51,8 @@ export class UserService {
       },
     );
   }
+
+  async findOneById(id: number) {
+    return this.repository.findOneBy({ id });
+  }
 }

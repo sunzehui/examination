@@ -42,17 +42,13 @@ export class ExamRoomService {
       end_time: createExamRoomDto.end_time,
     });
     examRoomEntity.use_exam_paper = examPaperEntity;
-    examRoomEntity.status = this.checkExamStatus(
-      createExamRoomDto.begin_time,
-      createExamRoomDto.end_time,
-    );
     examRoomEntity.for_classes = classesEntity;
 
     return this.repo.save(examRoomEntity);
   }
 
   // 查询该用户所有考试
-  async findAll(query, userId) {
+  async findAll(userId, query = {}) {
     const qb = this.repo
       .createQueryBuilder('er')
       .where(query)
@@ -67,6 +63,7 @@ export class ExamRoomService {
         return 'forClassesId IN' + subQuery;
       })
       .getMany();
+
     return await qb;
   }
 

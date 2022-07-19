@@ -38,6 +38,10 @@ export class AuthService {
     };
   }
 
+  verifyJwt(jwt: string) {
+    return this.jwtService.verifyAsync(jwt);
+  }
+
   async login(userInfo: UserStatusDTO): Promise<UserLoginResult> {
     const token = this.createToken(userInfo);
     return {

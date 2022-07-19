@@ -3,8 +3,8 @@ import * as request from 'supertest';
 
 describe('AppController', () => {
   const userInfo = {
-    username: 'sunzehui',
-    password: 'sunzehui',
+    username: 'sunzehui_t',
+    password: 'sunzehui_t',
   };
 
   describe('用户登录', () => {
@@ -19,6 +19,7 @@ describe('AppController', () => {
       expect(res.body.data.token).toBeDefined();
       expect(res.body.data.token.expires).toBeDefined();
       expect(res.body.data.token.value).toBeDefined();
+      console.log(res.body.data.token.value);
     });
   });
   afterAll(async () => {
