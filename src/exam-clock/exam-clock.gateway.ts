@@ -5,16 +5,22 @@ import {
   OnGatewayDisconnect,
   WebSocketServer,
   OnGatewayConnection,
-  ConnectedSocket,
 } from '@nestjs/websockets';
 import { ExamClockService } from './exam-clock.service';
-import { UnauthorizedException } from '@nestjs/common';
+import { UseFilters, UseGuards } from '@nestjs/common';
 import { Socket, Server } from 'socket.io';
 import { ResultData } from '@/common/utils/result';
+import { ExamRecordDto } from '@/exam-record/dto/create-exam-record.dto';
+import { CustomSocket } from '@/common/types/CustomSocket';
+import { AuthGuard } from '@/exam-clock/guards/auth.guard';
+import { UnauthorizedErrorFilter } from '@/common/filter/unauthorized.filter';
+import { User } from '@/exam-clock/decorator/user.decorator';
+import { BanRepeatGuard } from '@/exam-clock/guards/ban-repeat.guard';
 
 @WebSocketGateway({
   cors: true,
 })
+@UseFilters(new UnauthorizedErrorFilter())
 export class ExamClockGateway
   implements OnGatewayConnection, OnGatewayDisconnect
 {
@@ -23,34 +29,61 @@ export class ExamClockGateway
   @WebSocketServer()
   server: Server;
 
-  async handleConnection(socket: Socket) {
-    try {
-      const user = await this.examClockService.getUserFromSocket(socket);
-      socket.emit('connected', user);
-    } catch (e) {
-      return ExamClockGateway.disconnect(socket);
-    }
+  @UseGuards(AuthGuard)
+  async handleConnection(socket: CustomSocket) {
+    socket.emit('connected', '考场监控连接成功！');
   }
 
   handleDisconnect(socket: Socket) {
+    socket.emit('disconnected', '考场监控断开连接！');
     socket.disconnect();
   }
 
-  private static disconnect(socket: Socket) {
-    socket.emit('Error', new UnauthorizedException());
-    socket.disconnect();
-  }
-
+  @UseGuards(AuthGuard)
   @SubscribeMessage('findAllExamClock')
-  async findAll(@ConnectedSocket() socket) {
-    const user = await this.examClockService.getUserFromSocket(socket);
-    const result = await this.examClockService.findAll(+user.id);
+  async findAll(@User('id') userId: string) {
+    const result = await this.examClockService.findAll(+userId);
+    return ResultData.ok(result);
+  }
+
+  // 考生作答
+  @UseGuards(AuthGuard)
+  @SubscribeMessage('userAnswerRecord')
+  async studentAnswer(
+    @MessageBody() examRecordDto: ExamRecordDto,
+    @User('id') userId,
+  ) {
+    const result = await this.examClockService.recordAnswer(
+      examRecordDto,
+      userId,
+    );
     return ResultData.ok(result);
   }
 
   @SubscribeMessage('findOneExamClock')
   findOne(@MessageBody() id: number) {
     return this.examClockService.findOne(id);
+  }
+
+  @UseGuards(AuthGuard, BanRepeatGuard)
+  @SubscribeMessage('forceSubmitPaper')
+  async forceSubmitPaper(
+    @MessageBody() { roomId },
+    @User('id') userId: string,
+  ) {
+    return await this.examClockService.addForceSubmitPaperTask(
+      +roomId,
+      +userId,
+    );
+  }
+
+  @UseGuards(AuthGuard, BanRepeatGuard)
+  @SubscribeMessage('submitPaper')
+  async manualSubmitPaper(
+    @MessageBody() { roomId },
+    @User('id') userId: string,
+  ) {
+    return await this.examClockService.submitPaper(+roomId, +userId);
   }
 
   @SubscribeMessage('removeExamClock')

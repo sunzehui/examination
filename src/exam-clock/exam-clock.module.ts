@@ -4,9 +4,20 @@ import { ExamClockGateway } from './exam-clock.gateway';
 import { AuthModule } from '@/common/module/auth/auth.module';
 import { UserModule } from '@/common/module/user/user.module';
 import { ExamRoomModule } from '@/exam-room/exam-room.module';
+import { ExamRecordModule } from '@/exam-record/exam-record.module';
+import { BullModule } from '@nestjs/bull';
+import { ExamProcessor } from '@/exam-clock/exam.processor';
 
 @Module({
-  imports: [AuthModule, UserModule, ExamRoomModule],
-  providers: [ExamClockGateway, ExamClockService],
+  imports: [
+    AuthModule,
+    UserModule,
+    ExamRoomModule,
+    ExamRecordModule,
+    BullModule.registerQueue({
+      name: 'exam',
+    }),
+  ],
+  providers: [ExamClockGateway, ExamClockService, ExamProcessor],
 })
 export class ExamClockModule {}

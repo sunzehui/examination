@@ -6,6 +6,11 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { ExamRoom } from '@/exam-room/entities/exam-room.entity';
 import { User } from '@/common/module/user/entities/user.entity';
 import { ExamPaper } from '@/exam-paper/entities/exam-paper.entity';
+import * as dayjs from 'dayjs';
+import * as utc from 'dayjs/plugin/utc';
+import * as _get from 'lodash/get';
+
+dayjs.extend(utc);
 
 @Injectable()
 export class ExamRecordService {
@@ -13,6 +18,13 @@ export class ExamRecordService {
     @InjectRepository(ExamRecord)
     private readonly repo: Repository<ExamRecord>,
   ) {}
+
+  async findExist(examRecordDto: ExamRecordDto, userId) {
+    return this.repo.findOneBy({
+      exam_room: { id: examRecordDto.exam_room_id },
+      user: { id: userId },
+    });
+  }
 
   async create(examRecordDto: ExamRecordDto, userId) {
     const examRoomEntity = new ExamRoom();
@@ -27,8 +39,17 @@ export class ExamRecordService {
       user: uEntity,
       answer: examRecordDto.answer,
     });
-    console.log(examRecordEntity);
+
     return await this.repo.save(examRecordEntity);
+  }
+
+  async submitPaper(roomId, userId) {
+    const recordEntity = await this.repo.findOneBy({
+      exam_room: { id: roomId },
+      user: { id: userId },
+    });
+    recordEntity.submit_time = dayjs().utc().format();
+    return await this.repo.save(recordEntity);
   }
 
   findAll() {
@@ -37,14 +58,37 @@ export class ExamRecordService {
 
   // 根据记录id查考试记录信息
   findOne(id: number) {
-    console.log(id);
     return this.repo.findOne({
       where: { id },
       relations: ['user', 'exam_room', 'exam_paper'],
     });
   }
 
+  async setExamSubmitStatus(roomId: number, userId: number) {
+    try {
+      const examRecordEntity = await this.repo.findOne({
+        where: {
+          exam_room: { id: roomId },
+          user: { id: userId },
+        },
+      });
+      if (!examRecordEntity) return;
+      examRecordEntity.submit_time = dayjs().utc().format();
+      await this.repo.save(examRecordEntity);
+    } catch (e) {
+      console.log(e);
+    }
+  }
+
   remove(id: number) {
     return `This action removes a #${id} examRecord`;
+  }
+
+  async findSubmitTime(roomId, userId) {
+    const entity = await this.repo.findOneBy({
+      exam_room: { id: roomId },
+      user: { id: userId },
+    });
+    return _get(entity, 'submit_time');
   }
 }

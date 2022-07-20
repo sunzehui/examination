@@ -38,8 +38,8 @@ export class AuthService {
     };
   }
 
-  verifyJwt(jwt: string) {
-    return this.jwtService.verifyAsync(jwt);
+  async verifyJwt(jwt: string) {
+    return await this.jwtService.verifyAsync(jwt);
   }
 
   async login(userInfo: UserStatusDTO): Promise<UserLoginResult> {

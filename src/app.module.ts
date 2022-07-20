@@ -13,6 +13,7 @@ import { ExamRoomModule } from './exam-room/exam-room.module';
 import { ExamRecordModule } from './exam-record/exam-record.module';
 import { ExamClockModule } from './exam-clock/exam-clock.module';
 import configuration from './config/configuration';
+import { BullModule } from '@nestjs/bull';
 
 @Module({
   imports: [
@@ -20,6 +21,13 @@ import configuration from './config/configuration';
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
+    }),
+    BullModule.forRoot({
+      redis: {
+        host: 'localhost',
+        port: 6379,
+        password: '123456',
+      },
     }),
     UserModule,
     AuthModule,

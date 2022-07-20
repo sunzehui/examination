@@ -1,4 +1,4 @@
-import { Injectable } from '@nestjs/common';
+import { Injectable, UnprocessableEntityException } from '@nestjs/common';
 import { CreateExamRoomDto } from './dto/create-exam-room.dto';
 import { InjectRepository } from '@nestjs/typeorm';
 import { ExamPaper } from '@/exam-paper/entities/exam-paper.entity';
@@ -65,6 +65,13 @@ export class ExamRoomService {
       .getMany();
 
     return await qb;
+  }
+
+  async findExamEndTime(id: number) {
+    const entity = await this.repo.findOneBy({ id });
+    if (!entity) throw new UnprocessableEntityException();
+
+    return entity.end_time;
   }
 
   // 查询时关联试卷

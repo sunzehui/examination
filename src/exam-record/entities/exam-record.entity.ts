@@ -17,6 +17,9 @@ export class ExamRecord {
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   create_time: string;
 
+  @Column({ type: 'datetime', default: null })
+  submit_time: string;
+
   @ManyToOne(() => ExamPaper)
   @JoinColumn()
   exam_paper: ExamPaper;
