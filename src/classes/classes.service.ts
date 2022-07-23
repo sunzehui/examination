@@ -52,8 +52,4 @@ export class ClassesService {
     const newClassesEntity = this.repo.create(classesEntity);
     return this.repo.save(newClassesEntity);
   }
-
-  remove(id: number) {
-    return `This action removes a #${id} class`;
-  }
 }
