@@ -14,6 +14,7 @@ async function bootstrap() {
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('doc', app, document);
 
+  app.setGlobalPrefix("api");
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
   console.log('server running at http://localhost:3000')

@@ -9,7 +9,7 @@ import {
 } from 'typeorm';
 import { User } from '@/common/module/user/entities/user.entity';
 import { ExamRoom } from '@/exam-room/entities/exam-room.entity';
-import { ApiProperty } from "@nestjs/swagger";
+import { ApiProperty } from '@nestjs/swagger';
 
 @Entity('classes')
 export class Classes {
@@ -17,8 +17,8 @@ export class Classes {
   id: number;
 
   @ApiProperty({
-    type:String,
-    description:"班级名称"
+    type: String,
+    description: '班级名称',
   })
   @Column({ default: '未命名班级' })
   name: string;
@@ -27,15 +27,15 @@ export class Classes {
   create_time: number;
 
   @ApiProperty({
-    type:String,
-    description:"老师"
+    type: String,
+    description: '老师',
   })
   @ManyToOne(() => User, (user) => user.created_class)
   created_by: User;
 
   @ApiProperty({
-    type:[User],
-    description:"班级所有学生/老师"
+    type: [User],
+    description: '班级所有学生/老师',
   })
   @ManyToMany(() => User, (user) => user.join_class, {})
   @JoinTable({
@@ -44,8 +44,8 @@ export class Classes {
   users: User[];
 
   @ApiProperty({
-    type:[ExamRoom],
-    description:"关联考试"
+    type: [ExamRoom],
+    description: '关联考试',
   })
   @OneToMany(() => ExamRoom, (e) => e.for_classes)
   has_exam: ExamRoom[];

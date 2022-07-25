@@ -22,6 +22,12 @@ export class ClassesService {
     return this.repo.save(classesEntity);
   }
 
+  find() {
+    return this.repo.find({
+      relations: ['users'],
+    });
+  }
+
   findOne(id) {
     return this.repo.findOneBy({
       id,
@@ -48,6 +54,20 @@ export class ClassesService {
       userEntity.id = u.user_id;
       return userEntity;
     });
+
+    const newClassesEntity = this.repo.create(classesEntity);
+    return this.repo.save(newClassesEntity);
+  }
+
+  async joinClass(id: number, userId) {
+    const userEntity = new User();
+    userEntity.id = userId;
+    const classesEntity = await this.repo.findOne({
+      where: { id },
+      relations: ['users'],
+    });
+
+    classesEntity.users.push(userEntity);
 
     const newClassesEntity = this.repo.create(classesEntity);
     return this.repo.save(newClassesEntity);
