@@ -35,15 +35,9 @@ export class ClassesService {
   }
 
   findStudent(id: number) {
-    return this.repo.find({
+    return this.repo.findOne({
       where: { id },
-      join: {
-        alias: 'user',
-        leftJoinAndSelect: {
-          username: 'user.username',
-          id: 'user.id',
-        },
-      },
+      relations: ['users', 'created_by'],
     });
   }
 

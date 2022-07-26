@@ -82,7 +82,7 @@ export class ClassesController {
     type: String,
     name: '班级编号',
   })
-  @Auth(Role.teacher)
+  @Auth(Role.teacher, Role.student)
   async findOneStu(@Param('id') id: string) {
     const result = await this.classesService.findStudent(+id);
     return ResultData.ok(result);

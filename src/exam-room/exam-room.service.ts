@@ -48,11 +48,11 @@ export class ExamRoomService {
   }
 
   // 查询该用户所有考试
-  async findAll(userId, query = {}) {
+  async findAll(userId: number, query: any = {}) {
     const qb = this.repo
       .createQueryBuilder('er')
-      .where(query)
-      .andWhere((qb) => {
+      .where((qb) => {
+        // 查找用户所在班级
         const subQuery = qb
           .subQuery()
           .select('id')
@@ -62,9 +62,21 @@ export class ExamRoomService {
           .getQuery();
         return 'forClassesId IN' + subQuery;
       })
-      .getMany();
+      .leftJoinAndSelect(
+        'er.created_by',
+        'teacher',
+        'er.createdById = teacher.id',
+      )
+      .leftJoinAndSelect(
+        'er.for_classes',
+        'classes',
+        'er.forClassesId = classes.id',
+      );
 
-    return await qb;
+    if (query.classesId) {
+      qb.andWhere('forClassesId = :id', { id: query.classesId });
+    }
+    return await qb.getMany();
   }
 
   async findExamEndTime(id: number) {
