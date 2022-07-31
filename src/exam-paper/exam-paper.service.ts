@@ -44,7 +44,6 @@ export class ExamPaperService {
       relations: ['has_Q'],
     });
     const ids = paperEntity.has_Q.map((q) => q.id);
-    console.log(ids);
 
     const allQEntities = await this.questionService.findIn(ids, showAnswer);
 

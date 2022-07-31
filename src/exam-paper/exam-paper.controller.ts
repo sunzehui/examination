@@ -43,15 +43,17 @@ export class ExamPaperController {
     return ResultData.ok(result);
   }
   @Get('mine')
-  @Auth(Role.teacher, Role.student)
+  @Auth(Role.teacher)
   async findMine(@User('id') userId) {
     const result = await this.examPaperService.findMine(userId);
     return ResultData.ok(result);
   }
 
   @Get(':id')
-  async findOne(@Param('id') id: string) {
-    const result = await this.examPaperService.findOne(+id);
+  @Auth(Role.student, Role.teacher)
+  async findOne(@Param('id') id: string, @User('role') role) {
+    let showAnswer = role === Role.teacher;
+    const result = await this.examPaperService.findOne(+id, showAnswer);
     return ResultData.ok(result);
   }
 
