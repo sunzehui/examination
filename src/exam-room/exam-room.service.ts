@@ -29,22 +29,27 @@ export class ExamRoomService {
   }
 
   create(createExamRoomDto: CreateExamRoomDto, userId) {
-    const examPaperEntity = new ExamPaper();
-    examPaperEntity.id = createExamRoomDto.exam_paper_id;
+    const examRoomEntities = createExamRoomDto.classes_ids.map((cId) => {
+      const examPaperEntity = new ExamPaper();
+      examPaperEntity.id = createExamRoomDto.exam_paper_id;
 
-    const classesEntity = new Classes();
-    classesEntity.id = createExamRoomDto.classes_id;
+      const classesEntity = new Classes();
+      classesEntity.id = cId;
 
-    const examRoomEntity = this.repo.create({
-      name: createExamRoomDto.name,
-      created_by: { id: userId },
-      begin_time: createExamRoomDto.begin_time,
-      end_time: createExamRoomDto.end_time,
+      const examRoomEntity = this.repo.create({
+        name: createExamRoomDto.name,
+        created_by: { id: userId },
+        begin_time: createExamRoomDto.begin_time,
+        end_time: createExamRoomDto.end_time,
+        desc: createExamRoomDto.desc,
+      });
+
+      examRoomEntity.use_exam_paper = examPaperEntity;
+      examRoomEntity.for_classes = classesEntity;
+      return examRoomEntity;
     });
-    examRoomEntity.use_exam_paper = examPaperEntity;
-    examRoomEntity.for_classes = classesEntity;
 
-    return this.repo.save(examRoomEntity);
+    return this.repo.save(examRoomEntities);
   }
 
   // 查询该用户所有考试

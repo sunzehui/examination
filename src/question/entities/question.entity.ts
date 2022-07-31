@@ -14,10 +14,10 @@ export class Question {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ type: 'char', length: 255, nullable: false })
+  @Column({ type: 'varchar', length: 255, nullable: false })
   content: string;
 
-  @Column({ type: 'char', length: 255, default: '暂无解析' })
+  @Column({ type: 'varchar', length: 255, default: '暂无解析' })
   resolution: string;
 
   @Column({ type: 'timestamp', default: () => 'CURRENT_TIMESTAMP' })
@@ -33,6 +33,8 @@ export class Question {
 
   @ManyToMany(() => ExamPaper, (e) => e.has_Q)
   in_exam_paper: ExamPaper[];
+  @Column({ type: 'int', default: 2 })
+  score: number;
 }
 
 @Entity('choice')
@@ -43,8 +45,6 @@ export class ChoiceQ {
   @ManyToOne(() => Question, (q) => q.choice)
   question: Question;
 
-  @Column({ type: 'int', default: 2 })
-  score: number;
   @Column({ type: 'varchar', length: 255, default: '' })
   content: string;
 
@@ -62,9 +62,6 @@ export class FillBlankQ {
 
   @Column({ type: 'varchar', nullable: false, length: 255 })
   pos: string;
-
-  @Column({ type: 'int', default: 2 })
-  score: number;
 
   @Column({ type: 'varchar', nullable: false, length: 255, select: false })
   content: string;

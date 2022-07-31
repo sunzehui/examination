@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   OneToOne,
@@ -24,10 +25,12 @@ export class ExamRoom {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ type: 'varchar', default: '' })
+  desc: string;
   @Column({ type: 'varchar', default: '未命名考场' })
   name: string;
 
-  @OneToOne(() => ExamPaper, (ep) => ep.bind_exam_room)
+  @ManyToOne(() => ExamPaper, (ep) => ep.bind_exam_room)
   @JoinColumn()
   use_exam_paper: ExamPaper;
 

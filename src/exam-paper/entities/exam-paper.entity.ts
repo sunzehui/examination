@@ -4,6 +4,7 @@ import {
   JoinTable,
   ManyToMany,
   ManyToOne,
+  OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -39,6 +40,6 @@ export class ExamPaper {
   })
   has_Q: Question[];
 
-  @OneToOne(() => ExamRoom, (er) => er.use_exam_paper)
-  bind_exam_room: ExamRoom;
+  @OneToMany(() => ExamRoom, (er) => er.use_exam_paper)
+  bind_exam_room: ExamRoom[];
 }

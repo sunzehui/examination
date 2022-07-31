@@ -48,6 +48,7 @@ export class QuestionService {
     }
     qEntity.content = fcEntity.content;
     qEntity.resolution = fcEntity.resolution;
+    qEntity.score = fcEntity.score;
     return qEntity;
   }
 
@@ -110,10 +111,8 @@ export class QuestionService {
   }
 
   async findIn(ids: number[], showAnswer = false): Promise<QuestionDto[]> {
-    // const qEntities = await this.repo.find({
-    //   where: { id: In(ids) },
-    //   relations: ['choice', 'fill_blank'],
-    // });
+    if (_isEmpty(ids)) return [];
+
     const qb = this.repo
       .createQueryBuilder('q')
       .where('q.id in (:ids)', { ids })
@@ -142,8 +141,13 @@ export class QuestionService {
         case QType.choice:
           const standChoice = answerChoice.find((q) => q.id === item.qId);
           const choiceAnswer = _keyBy(standChoice.answer, 'id');
-          console.log('ca', choiceAnswer);
-          isAnswerTruly = choiceAnswer[item.answer].is_answer;
+          isAnswerTruly = item.answer.map((aId: number) => {
+            const truly = choiceAnswer[aId].is_answer;
+            return {
+              aId,
+              truly,
+            };
+          });
           result = {
             standAnswer: standChoice,
             userAnswer: item.answer,

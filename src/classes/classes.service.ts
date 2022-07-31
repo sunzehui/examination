@@ -27,6 +27,13 @@ export class ClassesService {
       relations: ['users'],
     });
   }
+  async findMine(userId: number) {
+    return await this.repo
+      .createQueryBuilder('c')
+      .leftJoinAndSelect('user_classes', 'uc', 'uc.classesId = c.id')
+      .where('uc.userId = :userId', { userId })
+      .getMany();
+  }
 
   findOne(id) {
     return this.repo.findOneBy({

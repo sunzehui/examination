@@ -42,6 +42,12 @@ export class ExamPaperController {
     const result = await this.examPaperService.findAll(query);
     return ResultData.ok(result);
   }
+  @Get('mine')
+  @Auth(Role.teacher, Role.student)
+  async findMine(@User('id') userId) {
+    const result = await this.examPaperService.findMine(userId);
+    return ResultData.ok(result);
+  }
 
   @Get(':id')
   async findOne(@Param('id') id: string) {
@@ -62,7 +68,6 @@ export class ExamPaperController {
       +id,
       examineesPaperDto,
     );
-    console.log(exam_room_id);
     await this.examRecordService.create(
       {
         exam_paper_id: +id,

@@ -80,6 +80,8 @@ describe('ExamPaperController', () => {
         .send({ name })
         .set('Accept', 'application/json')
         .set('Authorization', 'Bearer ' + token);
+      console.log(res.body);
+
       expect(_get(res, 'body.data.id')).toBeDefined();
       expect(res.statusCode).toBe(200);
       newPaperId = res.body.data.id;

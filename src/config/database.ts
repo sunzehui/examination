@@ -1,10 +1,10 @@
 import { DataSourceOptions } from 'typeorm';
 const ormCfg = {
   type: 'mysql',
-  host: 'server.hui.zone',
+  host: 'localhost',
   port: 3306,
-  username: 'exam',
-  password: 'exam',
+  username: 'root',
+  password: 'sunzehui',
   database: 'exam',
   entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,

@@ -17,6 +17,7 @@ export class Choice {
   @IsNotEmpty()
   is_answer: boolean;
   resolution: string;
+  score: number;
 }
 
 export class BaseQuestion {
@@ -24,6 +25,7 @@ export class BaseQuestion {
   content: string;
   resolution: string;
   id?: number;
+  score: number;
 }
 
 export class ChoiceQuestion extends BaseQuestion {

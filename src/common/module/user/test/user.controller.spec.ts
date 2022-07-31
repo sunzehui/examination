@@ -7,14 +7,14 @@ describe('AppController', () => {
     username: 'sunzehui' + randomInt(999),
     password: 'sunzehui',
   };
-  // const teacher = {
-  //   username: 'sunzehui_t',
-  //   password: 'sunzehui_t',
-  // };
-  // const student = {
-  //   username: 'sunzehui',
-  //   password: 'sunzehui',
-  // };
+  const teacher = {
+    username: 'sunzehui_t',
+    password: 'sunzehui_t',
+  };
+  const student = {
+    username: 'sunzehui',
+    password: 'sunzehui',
+  };
   let token = null;
   describe('用户注册', () => {
     let appServer = null;
@@ -25,14 +25,14 @@ describe('AppController', () => {
         .post('/user/register')
         .set('Accept', 'application/json')
         .send(userInfo);
-      // await request(appServer)
-      //   .post('/user/register')
-      //   .set('Accept', 'application/json')
-      //   .send(student);
-      // const teacherRes = await request(appServer)
-      //   .post('/user/register')
-      //   .set('Accept', 'application/json')
-      //   .send(teacher);
+      await request(appServer)
+        .post('/user/register')
+        .set('Accept', 'application/json')
+        .send(student);
+      const teacherRes = await request(appServer)
+        .post('/user/register')
+        .set('Accept', 'application/json')
+        .send(teacher);
       expect(res).toBeDefined();
       expect(res.statusCode).toBe(200);
       expect(res.body.data).toBeDefined();

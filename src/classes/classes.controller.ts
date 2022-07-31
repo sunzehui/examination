@@ -45,19 +45,18 @@ export class ClassesController {
     return ResultData.ok(result);
   }
 
-  // 查询本班信息
-  @Get(':id')
+  // 查询自己的班级信息
+  @Get('mine')
   @ApiResponse({
     status: 200,
-    description: '查询本班信息',
-    type: ResultData<Classes>,
+    description: '查询我加入的班级信息',
+    type: ResultData<[Classes]>,
   })
   @Auth(Role.teacher, Role.student)
-  async findOne(@Param('id') id: string) {
-    const result = await this.classesService.findOne(id);
+  async findMine(@User('id') userId) {
+    const result = await this.classesService.findMine(userId);
     return ResultData.ok(result);
   }
-
   // 查询所有班级信息
   @Get()
   @ApiResponse({
@@ -85,6 +84,19 @@ export class ClassesController {
   @Auth(Role.teacher, Role.student)
   async findOneStu(@Param('id') id: string) {
     const result = await this.classesService.findStudent(+id);
+    return ResultData.ok(result);
+  }
+
+  // 查询本班信息
+  @Get(':id')
+  @ApiResponse({
+    status: 200,
+    description: '查询本班信息',
+    type: ResultData<Classes>,
+  })
+  @Auth(Role.teacher, Role.student)
+  async findOne(@Param('id') id: string) {
+    const result = await this.classesService.findOne(id);
     return ResultData.ok(result);
   }
 

@@ -15,17 +15,25 @@ export class ExamPaperService {
     private readonly questionService: QuestionService,
   ) {}
 
-  create(createExamPaperDto: CreateExamPaperDto, userId) {
+  async create(createExamPaperDto: CreateExamPaperDto, userId) {
     const examPaperEntity = this.repo.create({
       name: createExamPaperDto.name,
       created_by: { id: userId },
     });
-    return this.repo.save(examPaperEntity);
+
+    return await this.repo.save(examPaperEntity);
   }
 
   findAll(where) {
     return this.repo.find({
       where,
+    });
+  }
+  async findMine(userId: number) {
+    return await this.repo.find({
+      where: {
+        created_by: { id: userId },
+      },
     });
   }
 
@@ -36,6 +44,8 @@ export class ExamPaperService {
       relations: ['has_Q'],
     });
     const ids = paperEntity.has_Q.map((q) => q.id);
+    console.log(ids);
+
     const allQEntities = await this.questionService.findIn(ids, showAnswer);
 
     return {
