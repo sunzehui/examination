@@ -1,6 +1,7 @@
 import {
   Column,
   Entity,
+  Index,
   JoinColumn,
   ManyToOne,
   PrimaryGeneratedColumn,
@@ -10,6 +11,7 @@ import { User } from '@/common/module/user/entities/user.entity';
 import { ExamRoom } from '@/exam-room/entities/exam-room.entity';
 
 @Entity()
+@Index(["user", "exam_room"], { unique: true })
 export class ExamRecord {
   @PrimaryGeneratedColumn()
   id: number;

@@ -38,6 +38,7 @@ export class ExamRecordService {
       exam_room: examRoomEntity,
       user: uEntity,
       answer: examRecordDto.answer,
+      submit_time: dayjs().utc().format(),
     });
 
     return await this.repo.save(examRecordEntity);

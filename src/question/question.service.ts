@@ -62,6 +62,7 @@ export class QuestionService {
       'content',
       'resolution',
       'create_time',
+      'score',
     ]);
     qEntity.type = _qEntity.q_type;
     switch (_qEntity.q_type) {
@@ -133,7 +134,7 @@ export class QuestionService {
   ) {
     const answerChoice = qDtoList.filter((value) => value.type == QType.choice);
     const answerFB = qDtoList.filter((value) => value.type == QType.fill_blank);
-
+    let totalScore = 0;
     function checkQ(item) {
       let isAnswerTruly = false;
       let result = {};
@@ -141,41 +142,51 @@ export class QuestionService {
         case QType.choice:
           const standChoice = answerChoice.find((q) => q.id === item.qId);
           const choiceAnswer = _keyBy(standChoice.answer, 'id');
-          isAnswerTruly = item.answer.map((aId: number) => {
-            const truly = choiceAnswer[aId].is_answer;
-            return {
-              aId,
-              truly,
-            };
+          isAnswerTruly = item.answer.every((aId: number) => {
+            return choiceAnswer[aId].is_answer;
           });
+
+          const _qScore = isAnswerTruly ? standChoice.score : 0;
+
+          totalScore += _qScore;
           result = {
             standAnswer: standChoice,
             userAnswer: item.answer,
             isAnswerTruly,
+            qScore: _qScore,
             type: QType.choice,
           };
           break;
         case QType.fill_blank:
           const standFB = answerFB.find((q) => q.id === item.qId);
-          console.log(standFB.answer);
           const fBAnswer = _keyBy(standFB.answer, 'id');
-          const userAnswer = item.answer.map((a) => ({
-            isAnswerTruly: fBAnswer[a.id].content == a.content.trim(),
-            pos: a.pos,
-            content: a.content,
-          }));
+          let qScore = 0;
+          const userAnswer = item.answer.map((a) => {
+            isAnswerTruly = fBAnswer[a.id].content == a.content.trim();
+            qScore += isAnswerTruly ? fBAnswer[a.id].score : 0;
+            return {
+              isAnswerTruly,
+              pos: a.pos,
+              content: a.content,
+            };
+          });
 
+          totalScore += qScore;
           result = {
             standAnswer: standFB.answer,
             userAnswer,
             type: QType.fill_blank,
+            qScore,
           };
           break;
       }
       return result;
     }
 
-    return eDtoList.map(checkQ);
+    return {
+      answerRecord: eDtoList.map(checkQ),
+      totalScore,
+    };
   }
 
   remove(id: number) {

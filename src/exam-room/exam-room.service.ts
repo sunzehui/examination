@@ -64,6 +64,7 @@ export class ExamRoomService {
           .from('classes', 'c')
           .leftJoin('user_classes', 'uc', 'uc.classesId = c.id')
           .where('uc.userId = :userId', { userId })
+          .orWhere('c.createdById = :userId', { userId })
           .getQuery();
         return 'forClassesId IN' + subQuery;
       })

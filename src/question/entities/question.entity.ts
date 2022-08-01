@@ -65,4 +65,7 @@ export class FillBlankQ {
 
   @Column({ type: 'varchar', nullable: false, length: 255, select: false })
   content: string;
+
+  @Column({ type: 'int', nullable: false, default: 2 })
+  score: number;
 }

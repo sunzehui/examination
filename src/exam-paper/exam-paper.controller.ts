@@ -8,6 +8,7 @@ import {
   Patch,
   Post,
   Query,
+  UseGuards,
 } from '@nestjs/common';
 import { ExamPaperService } from './exam-paper.service';
 import { CreateExamPaperDto } from './dto/create-exam-paper.dto';
@@ -17,6 +18,7 @@ import { Role } from '@/common/module/auth/decorator/role.decorator';
 import { User } from '@/common/module/user/decorator/user.decorator';
 import { ExamineesPaperDto } from '@/exam-paper/dto/examinees-paper.dto';
 import { ExamRecordService } from '@/exam-record/exam-record.service';
+import { BanRepeatGuard } from '@/exam-clock/guards/ban-repeat.guard';
 
 @Controller('exam-paper')
 export class ExamPaperController {
@@ -59,6 +61,7 @@ export class ExamPaperController {
   }
 
   @Post(':id/submit')
+  @UseGuards(BanRepeatGuard)
   @Auth(Role.student)
   @HttpCode(200)
   async settlement(
@@ -74,7 +77,7 @@ export class ExamPaperController {
     await this.examRecordService.create(
       {
         exam_paper_id: +id,
-        answer: JSON.stringify(examineesPaperDto),
+        answer: JSON.stringify(result),
         exam_room_id: +exam_room_id,
       },
       userId,
