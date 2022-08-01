@@ -6,7 +6,7 @@ import { Repository } from 'typeorm';
 import { Question } from '@/question/entities/question.entity';
 import { QuestionService } from '@/question/question.service';
 import { ExamineesPaperDto } from '@/exam-paper/dto/examinees-paper.dto';
-
+import * as _remove from 'lodash/remove';
 @Injectable()
 export class ExamPaperService {
   constructor(
@@ -50,6 +50,7 @@ export class ExamPaperService {
     return {
       id: paperEntity.id,
       name: paperEntity.name,
+      desc: paperEntity.desc,
       question: allQEntities,
     };
   }
@@ -74,9 +75,21 @@ export class ExamPaperService {
       relations: ['has_Q'],
     });
     const qEntity = new Question();
-    examPaperEntity.id = eId;
     qEntity.id = qId;
     examPaperEntity.has_Q.push(qEntity);
+    return this.repo.save(examPaperEntity);
+  }
+
+  async removeQuestion(eId: number, qId: number) {
+    const examPaperEntity = await this.repo.findOne({
+      where: { id: eId },
+      relations: ['has_Q'],
+    });
+    const qEntity = new Question();
+    qEntity.id = qId;
+    _remove(examPaperEntity.has_Q, (entity) => entity.id === qId);
+    console.log(examPaperEntity);
+
     return this.repo.save(examPaperEntity);
   }
 

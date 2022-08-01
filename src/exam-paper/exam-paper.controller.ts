@@ -42,6 +42,7 @@ export class ExamPaperController {
     const result = await this.examPaperService.findAll(query);
     return ResultData.ok(result);
   }
+
   @Get('mine')
   @Auth(Role.teacher)
   async findMine(@User('id') userId) {
@@ -81,7 +82,14 @@ export class ExamPaperController {
     return ResultData.ok(result);
   }
 
-  @Patch(':id/question')
+  @Patch(':id/question/remove')
+  @Auth(Role.teacher)
+  async removeQuestion(@Param('id') id: string, @Query('q_id') qId: string) {
+    const result = await this.examPaperService.removeQuestion(+id, +qId);
+    return ResultData.ok(result);
+  }
+
+  @Patch(':id/question/add')
   @Auth(Role.teacher)
   async addQuestion(@Param('id') id: string, @Query('q_id') qId: string) {
     const result = await this.examPaperService.addQuestion(+id, +qId);

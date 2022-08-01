@@ -86,7 +86,7 @@
     "moduleNameMapper": {
       "@/(.*)$": "<rootDir>/$1"
     },
-    "testRegex": "exam-paper.*\\.spec\\.ts$",
+    "testRegex": "classes.*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
     },

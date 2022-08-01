@@ -32,6 +32,7 @@ export class ClassesService {
       .createQueryBuilder('c')
       .leftJoinAndSelect('user_classes', 'uc', 'uc.classesId = c.id')
       .where('uc.userId = :userId', { userId })
+      .orWhere('c.createdById = :userId', { userId })
       .getMany();
   }
 

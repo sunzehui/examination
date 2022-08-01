@@ -18,6 +18,8 @@ export class ExamPaper {
   id: number;
 
   @Column({ default: '试卷' })
+  desc: string;
+  @Column({ default: '试卷' })
   name: string;
 
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })

@@ -5,7 +5,7 @@ const ormCfg = {
   port: 3306,
   username: 'root',
   password: 'sunzehui',
-  database: 'exam',
+  database: 'tests',
   entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,
   datestrings: true,
