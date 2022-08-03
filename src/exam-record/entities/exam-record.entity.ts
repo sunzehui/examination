@@ -1,3 +1,4 @@
+import { Classes } from '@/classes/entities/classes.entity';
 import {
   Column,
   Entity,
@@ -11,7 +12,7 @@ import { User } from '@/common/module/user/entities/user.entity';
 import { ExamRoom } from '@/exam-room/entities/exam-room.entity';
 
 @Entity()
-@Index(["user", "exam_room"], { unique: true })
+@Index(['user', 'exam_room'], { unique: true })
 export class ExamRecord {
   @PrimaryGeneratedColumn()
   id: number;
@@ -36,4 +37,7 @@ export class ExamRecord {
   @ManyToOne(() => ExamRoom)
   @JoinColumn()
   exam_room: ExamRoom;
+
+  @Column({ type: 'int' })
+  score: number;
 }

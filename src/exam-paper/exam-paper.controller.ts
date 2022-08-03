@@ -79,6 +79,7 @@ export class ExamPaperController {
         exam_paper_id: +id,
         answer: JSON.stringify(result),
         exam_room_id: +exam_room_id,
+        score: result.totalScore,
       },
       userId,
     );

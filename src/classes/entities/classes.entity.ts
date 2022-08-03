@@ -1,3 +1,4 @@
+import { ExamRecord } from './../../exam-record/entities/exam-record.entity';
 import {
   Column,
   Entity,

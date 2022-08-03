@@ -37,6 +37,7 @@ export class ExamRecordService {
       exam_paper: examPaperEntity,
       exam_room: examRoomEntity,
       user: uEntity,
+      score: examRecordDto.score,
       answer: examRecordDto.answer,
       submit_time: dayjs().utc().format(),
     });
@@ -53,15 +54,20 @@ export class ExamRecordService {
     return await this.repo.save(recordEntity);
   }
 
-  findAll() {
-    return this.repo.find();
+  findAll(userId) {
+    return this.repo.find({
+      where: {
+        user: { id: userId },
+      },
+      relations: ['exam_room.for_classes', 'exam_paper'],
+    });
   }
 
   // 根据记录id查考试记录信息
   findOne(id: number) {
     return this.repo.findOne({
       where: { id },
-      relations: ['user', 'exam_room', 'exam_paper'],
+      relations: ['user', 'exam_room.for_classes', 'exam_paper'],
     });
   }
 

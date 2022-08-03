@@ -3,6 +3,8 @@ import { ExamRecordService } from './exam-record.service';
 import { ExamRecordDto } from './dto/create-exam-record.dto';
 import { ResultData } from '@/common/utils/result';
 import { User } from '@/common/module/user/decorator/user.decorator';
+import { Auth } from '@/common/module/auth/guards/auth.guard';
+import { Role } from '@/common/module/auth/decorator/role.decorator';
 
 @Controller('exam-record')
 export class ExamRecordController {
@@ -14,8 +16,9 @@ export class ExamRecordController {
   }
 
   @Get()
-  async findAll() {
-    const result = await this.examRecordService.findAll();
+  @Auth(Role.student, Role.teacher)
+  async findAll(@User('id') userId) {
+    const result = await this.examRecordService.findAll(userId);
     return ResultData.ok(result);
   }
 

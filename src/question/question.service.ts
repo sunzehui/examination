@@ -173,7 +173,7 @@ export class QuestionService {
 
           totalScore += qScore;
           result = {
-            standAnswer: standFB.answer,
+            standAnswer: standFB,
             userAnswer,
             type: QType.fill_blank,
             qScore,
