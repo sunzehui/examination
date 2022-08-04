@@ -17,6 +17,8 @@ export class ExamRecordService {
   constructor(
     @InjectRepository(ExamRecord)
     private readonly repo: Repository<ExamRecord>,
+    @InjectRepository(ExamPaper)
+    private readonly examPaperRepo: Repository<ExamPaper>,
   ) {}
 
   async findExist(examRecordDto: ExamRecordDto, userId) {
@@ -31,8 +33,12 @@ export class ExamRecordService {
     examRoomEntity.id = examRecordDto.exam_room_id;
     const uEntity = new User();
     uEntity.id = userId;
-    const examPaperEntity = new ExamPaper();
-    examPaperEntity.id = examRecordDto.exam_paper_id;
+    const examPaperEntity = await this.examPaperRepo.findOne({
+      where: { id: examRecordDto.exam_paper_id },
+      relations: ['created_by'],
+    });
+    const teacher = examPaperEntity.created_by;
+
     const examRecordEntity = this.repo.create({
       exam_paper: examPaperEntity,
       exam_room: examRoomEntity,
@@ -40,6 +46,7 @@ export class ExamRecordService {
       score: examRecordDto.score,
       answer: examRecordDto.answer,
       submit_time: dayjs().utc().format(),
+      rel_teacher: teacher,
     });
 
     return await this.repo.save(examRecordEntity);
@@ -56,10 +63,21 @@ export class ExamRecordService {
 
   findAll(userId) {
     return this.repo.find({
-      where: {
-        user: { id: userId },
-      },
+      where: [
+        {
+          user: { id: userId },
+        },
+        {
+          rel_teacher: { id: userId },
+        },
+      ],
       relations: ['exam_room.for_classes', 'exam_paper'],
+    });
+  }
+
+  async teacherFindAll(userId) {
+    return await this.repo.find({
+      where: {},
     });
   }
 

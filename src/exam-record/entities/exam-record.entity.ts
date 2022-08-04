@@ -40,4 +40,8 @@ export class ExamRecord {
 
   @Column({ type: 'int' })
   score: number;
+
+  @ManyToOne(() => User)
+  @JoinColumn()
+  rel_teacher: User;
 }

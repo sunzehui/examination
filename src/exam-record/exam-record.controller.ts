@@ -22,6 +22,13 @@ export class ExamRecordController {
     return ResultData.ok(result);
   }
 
+  @Get('teacher')
+  @Auth(Role.teacher)
+  async teacherFindAll(@User('id') userId) {
+    const result = await this.examRecordService.teacherFindAll(userId);
+    return ResultData.ok(result);
+  }
+
   @Get(':id')
   async findOne(@Param('id') id: string) {
     const result = await this.examRecordService.findOne(+id);
