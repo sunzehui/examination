@@ -14,6 +14,8 @@ import { ExamRecordModule } from './exam-record/exam-record.module';
 import { ExamClockModule } from './exam-clock/exam-clock.module';
 import configuration from './config/configuration';
 import { BullModule } from '@nestjs/bull';
+import { ServeStaticModule } from '@nestjs/serve-static';
+import { join } from 'path';
 
 @Module({
   imports: [
@@ -27,6 +29,14 @@ import { BullModule } from '@nestjs/bull';
         host: 'localhost',
         port: 6379,
         password: '123456',
+      },
+    }),
+    ServeStaticModule.forRoot({
+      rootPath: join(__dirname, '..', 'static'),
+      exclude: ['api/*'],
+      serveRoot: '/static',
+      serveStaticOptions: {
+        extensions: ['jpg', 'jpeg', 'png', 'gif'],
       },
     }),
     UserModule,

@@ -6,7 +6,9 @@ import {
   Patch,
   Post,
   Query,
+  UploadedFile,
   UseGuards,
+  UseInterceptors,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
@@ -16,7 +18,8 @@ import { Auth } from '@/common/module/auth/guards/auth.guard';
 import { Role } from '@/common/module/auth/decorator/role.decorator';
 import { JwtAuthGuard } from '@/common/module/auth/guards/jwt-auth.guard';
 import { User } from '@/common/module/auth/decorator/Req.decorator';
-
+import { FileInterceptor } from '@nestjs/platform-express';
+import { UploadFileDto } from './dto/upload-file.dto';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -44,6 +47,29 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   async setUserType(@User() { id }, @Query('to_type') toType) {
     const result = await this.userService.setUserType(+id, toType);
+    return ResultData.ok(result);
+  }
+
+  @Get('me')
+  @Auth(Role.teacher, Role.student)
+  async userProfile(@User('id') userId: number) {
+    const result = await this.userService.getUserProfile(userId);
+    return ResultData.ok(result);
+  }
+
+  @Patch('avatar')
+  @UseInterceptors(FileInterceptor('file'))
+  @Auth(Role.teacher, Role.student)
+  async setAvatar(
+    @UploadedFile() file: Express.Multer.File,
+    @User('id') userId,
+    @Body() uploadFileDto: UploadFileDto,
+  ) {
+    const result = await this.userService.setUserAvatar(
+      userId,
+      file,
+      uploadFileDto,
+    );
     return ResultData.ok(result);
   }
 }

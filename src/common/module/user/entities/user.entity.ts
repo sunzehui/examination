@@ -40,8 +40,14 @@ export class User {
   })
   user_type: number;
 
+  @Column({
+    type: 'varchar',
+    default: 'default_avatar.webp',
+  })
+  avatar_url: string;
+
   @OneToMany(() => Classes, (classes) => classes.created_by)
-  created_class: Classes[];
+  created_classes: Classes[];
 
   @ManyToMany(() => ExamPaper, (paper) => paper.created_by)
   created_exam_paper: ExamPaper[];
@@ -50,5 +56,5 @@ export class User {
   created_exam_room: ExamRoom[];
 
   @ManyToMany(() => Classes, (classes) => classes.users)
-  join_class: Classes[];
+  join_classes: Classes[];
 }
