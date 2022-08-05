@@ -14,6 +14,7 @@ import {
 } from 'fs';
 import { resolve as pathContcat } from 'path';
 import { queryFailedGuard } from '@/common/utils/tools';
+import { staticRoutePath } from '@/app.module';
 
 @Injectable()
 export class UserService {
@@ -78,7 +79,7 @@ export class UserService {
     if (!file) throw new HttpException('file not found', 400);
     await this.checkDir(pathContcat('static'));
     const fileName = userId + Date.now() + uploadFileDto.name;
-    await fsPromises.writeFile(`static/${fileName}`, file.buffer);
+    await fsPromises.writeFile(`${staticRoutePath}/${fileName}`, file.buffer);
     const userEntity = this.repository.create({
       id: userId,
       avatar_url: fileName,

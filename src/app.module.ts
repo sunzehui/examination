@@ -16,7 +16,7 @@ import configuration from './config/configuration';
 import { BullModule } from '@nestjs/bull';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
-
+export const staticRoutePath = join(__dirname, '..', 'static');
 @Module({
   imports: [
     TypeOrmModule.forRoot(connectionCfg),
@@ -32,7 +32,7 @@ import { join } from 'path';
       },
     }),
     ServeStaticModule.forRoot({
-      rootPath: join(__dirname, '..', 'static'),
+      rootPath: staticRoutePath,
       exclude: ['api/*'],
       serveRoot: '/static',
       serveStaticOptions: {
