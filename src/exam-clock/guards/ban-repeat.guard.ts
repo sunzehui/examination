@@ -23,7 +23,6 @@ export class BanRepeatGuard implements CanActivate {
   }
   getHTTPParams(ctx: ExecutionContext) {
     const request = ctx.switchToHttp().getRequest();
-
     const roomId = Number(_get(request, 'query.room_id'));
     const userId = Number(_get(request, 'user.id'));
 

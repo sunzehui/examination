@@ -27,7 +27,7 @@ export class ExamRecord {
   @JoinColumn()
   exam_paper: ExamPaper;
 
-  @Column({ type: 'json' })
+  @Column({ type: 'json', default: null })
   answer: string;
 
   @ManyToOne(() => User)
@@ -38,7 +38,7 @@ export class ExamRecord {
   @JoinColumn()
   exam_room: ExamRoom;
 
-  @Column({ type: 'int' })
+  @Column({ type: 'int', default: null })
   score: number;
 
   @ManyToOne(() => User)

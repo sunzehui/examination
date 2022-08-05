@@ -24,7 +24,7 @@ export class ExamPaperService {
     return await this.repo.save(examPaperEntity);
   }
 
-  findAll(where) {
+  async findAll(where) {
     return this.repo.find({
       where,
     });

@@ -29,7 +29,7 @@ import { Classes } from '@/classes/entities/classes.entity';
 export class ClassesController {
   constructor(private readonly classesService: ClassesService) {}
 
-  @Post('create')
+  @Post()
   @Auth(Role.teacher)
   @ApiBody({
     type: CreateClassDto,

@@ -31,14 +31,14 @@ export class Classes {
     type: String,
     description: '老师',
   })
-  @ManyToOne(() => User, (user) => user.created_class)
+  @ManyToOne(() => User, (user) => user.created_classes)
   created_by: User;
 
   @ApiProperty({
     type: [User],
     description: '班级所有学生/老师',
   })
-  @ManyToMany(() => User, (user) => user.join_class, {})
+  @ManyToMany(() => User, (user) => user.join_classes, {})
   @JoinTable({
     name: 'user_classes',
   })
