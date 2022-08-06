@@ -9,9 +9,12 @@ import { ExamPaper } from '@/exam-paper/entities/exam-paper.entity';
 import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
 import * as _get from 'lodash/get';
+import * as _pick from 'lodash/pick';
 import { RelationCountLoader } from 'typeorm/query-builder/relation-count/RelationCountLoader';
 import { RelationIdLoader } from 'typeorm/query-builder/relation-id/RelationIdLoader';
 import { RawSqlResultsToEntityTransformer } from 'typeorm/query-builder/transformer/RawSqlResultsToEntityTransformer';
+import { Classes } from '@/classes/entities/classes.entity';
+import { writeHeapSnapshot } from 'v8';
 
 dayjs.extend(utc);
 
@@ -97,9 +100,8 @@ export class ExamRecordService {
         'e_paper',
         'e_paper.id = e_record.examPaperId',
       )
-      .groupBy('e_record.relTeacherId');
+      .groupBy('e_room.for_classes');
     const rawResults = await qb.getRawMany();
-    console.log(rawResults);
 
     const avgScoreList = rawResults.map((entity) => ({
       id: entity.e_record_id,
@@ -142,7 +144,7 @@ export class ExamRecordService {
     });
   }
 
-  async statisticScore(userId: number, roomId: number) {
+  async getUserStatisticScore(userId: number, roomId: number) {
     const qb = this.repo
       .createQueryBuilder('e_record')
       .where((qb) => {
@@ -174,6 +176,37 @@ export class ExamRecordService {
       )
       .getMany();
     return await qb;
+  }
+  // 按班级查询学生分数
+  // 查出该班级所有学生，查分数
+  async findClassesStaticScore(classesId: number, roomId: number) {
+    const entitiesResult = await this.repo
+      .createQueryBuilder('e_record')
+      .where((qb) => {
+        const userIdsQB = qb
+          .subQuery()
+          .select('id')
+          .where('uc.classesId = :classesId', { classesId })
+          .leftJoin('user_classes', 'uc')
+          .from('user', 'user')
+          .getQuery();
+        return 'e_record.userId IN (' + userIdsQB + ')';
+      })
+      .where('e_record.examRoomId = :roomId', { roomId })
+      .leftJoinAndSelect(
+        'e_record.exam_room',
+        'e_room',
+        'e_room.id = e_record.examRoomId',
+      )
+      .leftJoinAndSelect(
+        'e_room.for_classes',
+        'classes',
+        'e_room.forClassesId = classes.id',
+      )
+      .leftJoinAndSelect('e_record.user', 'user')
+      .getMany();
+    // 查该用户的信息不是全部
+    return this.liftClassesEntity(entitiesResult);
   }
 
   // 根据记录id查考试记录信息
@@ -211,5 +244,25 @@ export class ExamRecordService {
       user: { id: userId },
     });
     return _get(entity, 'submit_time');
+  }
+
+  private liftClassesEntity(entitiesResult: ExamRecord[]) {
+    return entitiesResult.map((_record) => {
+      const user = _pick(_record.user, ['id', 'nickname', 'username']);
+      const exam_room = _pick(_record.exam_room, ['name']);
+      const classes = _pick(_record.exam_room.for_classes, ['name']);
+      const record = _pick(_record, [
+        'id',
+        'score',
+        'create_time',
+        'submit_time',
+      ]);
+      return {
+        user,
+        exam_room,
+        classes,
+        ...record,
+      };
+    });
   }
 }

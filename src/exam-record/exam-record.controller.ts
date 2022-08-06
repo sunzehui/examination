@@ -55,7 +55,20 @@ export class ExamRecordController {
   @Get('statistic')
   @Auth(Role.student, Role.teacher)
   async statistic(@User('id') userId, @Query('roomId') roomId) {
-    const result = await this.examRecordService.statisticScore(userId, roomId);
+    const result = await this.examRecordService.getUserStatisticScore(
+      userId,
+      roomId,
+    );
+    return ResultData.ok(result);
+  }
+
+  @Get('classes/:id')
+  @Auth(Role.teacher)
+  async findClassesStatic(@Param('id') classesId, @Query('roomId') roomId) {
+    const result = await this.examRecordService.findClassesStaticScore(
+      classesId,
+      roomId,
+    );
     return ResultData.ok(result);
   }
 

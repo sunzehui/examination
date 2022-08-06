@@ -77,7 +77,7 @@ export class ExamPaperController {
     await this.examRecordService.create(
       {
         exam_paper_id: +id,
-        answer: JSON.stringify(result),
+        answer: JSON.stringify(result.answerRecord),
         exam_room_id: +exam_room_id,
         score: result.totalScore,
       },
