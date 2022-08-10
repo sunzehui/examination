@@ -22,6 +22,12 @@ export class ClassesService {
     return this.repo.save(classesEntity);
   }
 
+  async anonymousFindAllClasses() {
+    return await this.repo.find({
+      select: ['id', 'name'],
+    });
+  }
+
   find() {
     return this.repo.find({
       relations: ['users'],

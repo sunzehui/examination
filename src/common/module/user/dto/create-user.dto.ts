@@ -1,4 +1,11 @@
-import { IsNotEmpty, MaxLength, MinLength, Validate } from 'class-validator';
+import {
+  IsNotEmpty,
+  IsNumber,
+  IsString,
+  MaxLength,
+  MinLength,
+  Validate,
+} from 'class-validator';
 import CustomUsername from '../decorator/create-user.decorator';
 export class CreateUserDto {
   @IsNotEmpty()
@@ -19,4 +26,10 @@ export class CreateUserDto {
     message: '密码长度不能大于18位',
   })
   password: string;
+
+  @IsString()
+  nickname: string;
+
+  @IsNumber()
+  classes: number;
 }

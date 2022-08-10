@@ -57,6 +57,13 @@ export class ClassesController {
     const result = await this.classesService.findMine(userId);
     return ResultData.ok(result);
   }
+
+  @Get('anonymous')
+  async anonymousFindAllClasses() {
+    const result = await this.classesService.anonymousFindAllClasses();
+    return ResultData.ok(result);
+  }
+
   // 查询所有班级信息
   @Get()
   @ApiResponse({

@@ -143,39 +143,34 @@ export class ExamRecordService {
       };
     });
   }
-
-  async getUserStatisticScore(userId: number, roomId: number) {
-    const qb = this.repo
+  // 查出该班所有学生的成绩和我的成绩
+  async getUserStatisticScore(userId: number, classesId: number) {
+    const records = await this.repo
       .createQueryBuilder('e_record')
-      .where((qb) => {
-        // 查找用户所在班级
-        const subQuery = qb
-          .subQuery()
-          .select('id')
-          .from('classes', 'c')
-          .leftJoin('user_classes', 'uc', 'uc.classesId = c.id')
-          .where('uc.userId = :userId', { userId })
-          .getQuery();
-        return 'forClassesId IN' + subQuery;
-      })
-      .where('e_record.examRoomId = :roomId', { roomId })
-      .leftJoinAndSelect(
+      .where('e_room.forClassesId = :classesId', { classesId })
+      .leftJoin(
         'e_record.rel_teacher',
         'teacher',
         'e_record.rel_teacher = teacher.id',
       )
-      .leftJoinAndSelect(
+      .leftJoin(
         'e_record.exam_room',
         'e_room',
         'e_room.id = e_record.examRoomId',
       )
-      .leftJoinAndSelect(
+      .leftJoin(
         'e_room.for_classes',
         'classes',
         'e_room.forClassesId = classes.id',
       )
+      // .where('e_record.userId != :userId', { userId })
       .getMany();
-    return await qb;
+
+    // const myRecord = await this.repo.findOneBy({ user: { id: userId } });
+    return {
+      other: records.map((r) => r.score),
+      // mine: myRecord.score,
+    };
   }
   // 按班级查询学生分数
   // 查出该班级所有学生，查分数

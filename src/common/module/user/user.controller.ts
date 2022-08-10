@@ -20,6 +20,7 @@ import { JwtAuthGuard } from '@/common/module/auth/guards/jwt-auth.guard';
 import { User } from '@/common/module/auth/decorator/Req.decorator';
 import { FileInterceptor } from '@nestjs/platform-express';
 import { UploadFileDto } from './dto/upload-file.dto';
+import { UpdateUserDto } from '@/common/module/user/dto/update-user.dto';
 @Controller('user')
 export class UserController {
   constructor(private readonly userService: UserService) {}
@@ -47,6 +48,16 @@ export class UserController {
   @UseGuards(JwtAuthGuard)
   async setUserType(@User() { id }, @Query('to_type') toType) {
     const result = await this.userService.setUserType(+id, toType);
+    return ResultData.ok(result);
+  }
+
+  @Patch()
+  @Auth(Role.teacher, Role.student)
+  async updateProfile(
+    @User('id') userId,
+    @Body() userProfileDto: UpdateUserDto,
+  ) {
+    const result = await this.userService.updateProfile(userId, userProfileDto);
     return ResultData.ok(result);
   }
 

@@ -15,6 +15,8 @@ import {
 import { resolve as pathContcat } from 'path';
 import { queryFailedGuard } from '@/common/utils/tools';
 import { staticRoutePath } from '@/app.module';
+import { Classes } from '@/classes/entities/classes.entity';
+import { UpdateUserDto } from '@/common/module/user/dto/update-user.dto';
 
 @Injectable()
 export class UserService {
@@ -26,9 +28,15 @@ export class UserService {
   async register(createUserDto: CreateUserDto) {
     const username = createUserDto.username;
     const password = createUserDto.password;
+    const nickname = createUserDto.nickname;
+    const classesEntity = new Classes();
+    classesEntity.id = createUserDto.classes;
+
     const userDO = {
       username,
       password,
+      nickname,
+      join_classes: [classesEntity],
     };
     try {
       const user = this.repository.create(userDO);
@@ -50,6 +58,15 @@ export class UserService {
       where: { username },
       select: ['username', 'password', 'user_type', 'id'],
     });
+  }
+
+  async updateProfile(userId: number, userDto: UpdateUserDto) {
+    return await this.repository.update(
+      {
+        id: userId,
+      },
+      userDto,
+    );
   }
 
   getAllStudent() {

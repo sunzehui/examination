@@ -25,6 +25,9 @@ export class ExamPaper {
   @Column({ type: 'datetime', default: () => 'CURRENT_TIMESTAMP' })
   create_time: number;
 
+  @Column({ type: 'int', default: () => 0 })
+  total_score: number;
+
   @ManyToOne(() => User, (user) => user.created_exam_paper)
   created_by: User;
 

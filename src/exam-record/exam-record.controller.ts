@@ -52,12 +52,13 @@ export class ExamRecordController {
     return ResultData.ok(result);
   }
 
+  // 统计班级内排名
   @Get('statistic')
   @Auth(Role.student, Role.teacher)
-  async statistic(@User('id') userId, @Query('roomId') roomId) {
+  async statistic(@User('id') userId, @Query('classesId') classesId) {
     const result = await this.examRecordService.getUserStatisticScore(
       userId,
-      roomId,
+      classesId,
     );
     return ResultData.ok(result);
   }
