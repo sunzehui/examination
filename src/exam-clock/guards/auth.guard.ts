@@ -13,6 +13,7 @@ export class AuthGuard implements CanActivate {
 
   async canActivate(context: ExecutionContext): Promise<boolean> {
     const socket = context.switchToWs().getClient();
+
     const token = _get(socket, 'handshake.headers.authorization');
     try {
       const decodedToken = await this.authService.verifyJwt(token);

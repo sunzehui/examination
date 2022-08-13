@@ -1,12 +1,19 @@
 import { ConfigService } from '@nestjs/config';
 import { UserStatusDTO } from '../user/dto/user-status.dto';
-import { Injectable, UnauthorizedException } from '@nestjs/common';
+import {
+  HttpException,
+  HttpStatus,
+  Injectable,
+  UnauthorizedException,
+} from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { LoginUserDto } from '@/common/module/user/dto/login-user.dto';
 import { UserService } from '@/common/module/user/user.service';
 import * as _ from 'lodash';
 import * as bcrypt from 'bcryptjs';
 import { UserLoginResult } from 'types/user';
+import { WsException } from '@nestjs/websockets';
+import { User } from '@/common/module/user/entities/user.entity';
 
 @Injectable()
 export class AuthService {
@@ -57,5 +64,30 @@ export class AuthService {
       value,
       expires,
     };
+  }
+  async verify(token: string, isWs: boolean = false): Promise<User | null> {
+    try {
+      const payload = await this.verifyJwt(token);
+      const user = await this.userService.findOneById(payload.id);
+
+      if (!user) {
+        if (isWs) {
+          throw new WsException('Unauthorized access');
+        } else {
+          throw new HttpException(
+            'Unauthorized access',
+            HttpStatus.BAD_REQUEST,
+          );
+        }
+      }
+
+      return user;
+    } catch (err) {
+      if (isWs) {
+        throw new WsException(err.message);
+      } else {
+        throw new HttpException(err.message, HttpStatus.BAD_REQUEST);
+      }
+    }
   }
 }

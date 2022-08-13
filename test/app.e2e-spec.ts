@@ -78,6 +78,7 @@ describe('创建用户', () => {
     const teacher = {
       username: 'teacher' + random,
       password: 'teacher' + random,
+      nickname: '小' + random,
     };
     await requestApp.post('user/register', teacher);
     const request = await useTokenRequest(teacher);
@@ -93,6 +94,7 @@ describe('创建用户', () => {
       return {
         username: 'student' + random,
         password: 'student' + random,
+        nickname: '小' + random,
       };
     });
     const createStudentTask = studentList.map((s) => {

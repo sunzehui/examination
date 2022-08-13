@@ -1,6 +1,7 @@
 import {
   IsNotEmpty,
   IsNumber,
+  IsOptional,
   IsString,
   MaxLength,
   MinLength,
@@ -27,9 +28,11 @@ export class CreateUserDto {
   })
   password: string;
 
+  @IsOptional()
   @IsString()
   nickname: string;
 
   @IsNumber()
+  @IsOptional()
   classes: number;
 }

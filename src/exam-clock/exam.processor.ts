@@ -1,10 +1,14 @@
 import { OnQueueActive, Process, Processor } from '@nestjs/bull';
 import { Job } from 'bull';
 import { ExamRecordService } from '@/exam-record/exam-record.service';
+import { ExamRoomService } from '@/exam-room/exam-room.service';
 
 @Processor('exam')
 export class ExamProcessor {
-  constructor(private readonly examRecordService: ExamRecordService) {}
+  constructor(
+    private readonly examRecordService: ExamRecordService,
+    private readonly examRoomService: ExamRoomService,
+  ) {}
 
   @Process('recordExam')
   async recordExam(job: Job) {

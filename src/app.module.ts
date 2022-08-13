@@ -16,6 +16,7 @@ import configuration from './config/configuration';
 import { BullModule } from '@nestjs/bull';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
+import { RedisModule } from 'nestjs-redis';
 export const staticRoutePath = join(__dirname, '..', 'static');
 @Module({
   imports: [
@@ -24,11 +25,14 @@ export const staticRoutePath = join(__dirname, '..', 'static');
       isGlobal: true,
       load: [configuration],
     }),
+    RedisModule.register({
+      host: 'localhost',
+      port: 6379,
+    }),
     BullModule.forRoot({
       redis: {
         host: 'localhost',
         port: 6379,
-        password: '123456',
       },
     }),
     ServeStaticModule.forRoot({

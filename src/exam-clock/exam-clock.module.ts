@@ -7,6 +7,7 @@ import { ExamRoomModule } from '@/exam-room/exam-room.module';
 import { ExamRecordModule } from '@/exam-record/exam-record.module';
 import { BullModule } from '@nestjs/bull';
 import { ExamProcessor } from '@/exam-clock/exam.processor';
+import { RedisModule } from 'nestjs-redis';
 
 @Module({
   imports: [
@@ -16,6 +17,10 @@ import { ExamProcessor } from '@/exam-clock/exam.processor';
     ExamRecordModule,
     BullModule.registerQueue({
       name: 'exam',
+    }),
+    RedisModule.register({
+      host: 'localhost',
+      port: 6379,
     }),
   ],
   providers: [ExamClockGateway, ExamClockService, ExamProcessor],
