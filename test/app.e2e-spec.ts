@@ -2,9 +2,7 @@ import axios from 'axios';
 import * as dayjs from 'dayjs';
 import * as utc from 'dayjs/plugin/utc';
 import { randomInt } from 'crypto';
-import { treeKillSync } from '@nestjs/cli/lib/utils/tree-kill';
 import * as isEmpty from 'lodash/isEmpty';
-import { extensionRegex } from 'ts-loader/dist/constants';
 export enum QType {
   choice,
   fill_blank,
@@ -89,7 +87,7 @@ describe('创建用户', () => {
   });
 
   it('should create student entity', async function () {
-    const studentList = new Array(5).fill(0).map((item) => {
+    const studentList = new Array(5).fill(0).map(() => {
       const random = randomInt(9999);
       return {
         username: 'student' + random,

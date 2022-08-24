@@ -1,12 +1,4 @@
-import {
-  Controller,
-  Get,
-  Post,
-  Body,
-  Param,
-  Delete,
-  HttpCode,
-} from '@nestjs/common';
+import { Controller, Get, Post, Body, Param, HttpCode } from '@nestjs/common';
 import { QuestionService } from './question.service';
 import { QuestionDto } from './dto/question.dto';
 import { ResultData } from '@/common/utils/result';
@@ -25,20 +17,10 @@ export class QuestionController {
     return ResultData.ok(result);
   }
 
-  @Get()
-  findAll() {
-    return this.questionService.findAll();
-  }
-
   @Get(':id')
   @Auth(Role.teacher, Role.student)
   async findOne(@Param('id') id: string) {
     const result = await this.questionService.findOne(+id);
     return ResultData.ok(result);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.questionService.remove(+id);
   }
 }

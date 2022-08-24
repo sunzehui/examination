@@ -10,10 +10,7 @@ import * as utc from 'dayjs/plugin/utc';
 import { RedisService } from 'nestjs-redis';
 import { WebSocketServer } from '@nestjs/websockets';
 import { Server } from 'socket.io';
-import {
-  ExamRoomRecordDto,
-  RecordActionType,
-} from '@/exam-clock/dto/exam-room-eecord.dto';
+import { RecordActionType } from '@/exam-clock/dto/exam-room-eecord.dto';
 
 dayjs.extend(utc);
 
@@ -53,16 +50,17 @@ export class ExamClockService {
   }
 
   async recordAnswer(
-    examRecordId: number,
+    examRoomId: number,
     userId: number,
     record: Record<number, any>,
     action: RecordActionType,
   ) {
     const client = await this.redisService.getClient();
     if (action === RecordActionType.set) {
-      await client.set(`${userId}-${examRecordId}`, JSON.stringify(record));
+      await client.set(`${userId}-${examRoomId}`, JSON.stringify(record));
     }
-    const result = await client.get(`${userId}-${examRecordId}`);
+    console.log(userId, examRoomId);
+    const result = await client.get(`${userId}-${examRoomId}`);
     return JSON.parse(result);
     // const existEntity = await this.examRecordService.findExist(
     //   examRecord,

@@ -52,10 +52,6 @@ export class QuestionService {
     return qEntity;
   }
 
-  findAll() {
-    return `This action returns all question`;
-  }
-
   private static sanitizeQEntity(_qEntity): QuestionDto {
     const qEntity = _pick(_qEntity, [
       'id',
@@ -78,29 +74,6 @@ export class QuestionService {
     }
     return qEntity;
   }
-
-  // async findOneWithAnswer(ids: number[]) {
-  //   // const allQEntities = await this.repo
-  //   //   .createQueryBuilder('q')
-  //   //   .where('q.id in (:ids)', { ids })
-  //   //   .leftJoinAndMapMany(
-  //   //     'q.choice',
-  //   //     'choice',
-  //   //     'choice',
-  //   //     'choice.questionId = q.id',
-  //   //   )
-  //   //   .leftJoinAndMapMany(
-  //   //     'q.fill_blank',
-  //   //     'fill_blank',
-  //   //     'fill_blank',
-  //   //     'fill_blank.questionId = q.id',
-  //   //   )
-  //   //   .getRawMany();
-  //
-  //   return {
-  //     question: allQEntities,
-  //   };
-  // }
 
   async findOne(id: number): Promise<QuestionDto> {
     const qEntity = await this.repo.findOne({
@@ -187,9 +160,5 @@ export class QuestionService {
       answerRecord: eDtoList.map(checkQ),
       totalScore,
     };
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} question`;
   }
 }
