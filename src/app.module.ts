@@ -1,5 +1,5 @@
 import { TypeOrmModule } from '@nestjs/typeorm';
-import connectionCfg from './config/database';
+import { mysqlCfg, redisCfg } from './config/database';
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -22,20 +22,14 @@ import { LoggerModule } from 'nestjs-pino';
 export const staticRoutePath = join(__dirname, '..', '..', 'static');
 @Module({
   imports: [
-    TypeOrmModule.forRoot(connectionCfg),
+    TypeOrmModule.forRoot(mysqlCfg),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],
     }),
-    RedisModule.register({
-      host: 'localhost',
-      port: 6379,
-    }),
+    RedisModule.register(redisCfg),
     BullModule.forRoot({
-      redis: {
-        host: 'localhost',
-        port: 6379,
-      },
+      redis: redisCfg,
     }),
     ServeStaticModule.forRoot({
       rootPath: staticRoutePath,
@@ -64,7 +58,7 @@ export class AppModule {}
 
 export const testModule = (entities) => ({
   imports: [
-    TypeOrmModule.forRoot({ ...connectionCfg, entities }),
+    TypeOrmModule.forRoot({ ...mysqlCfg, entities }),
     ConfigModule.forRoot({
       isGlobal: true,
       load: [configuration],

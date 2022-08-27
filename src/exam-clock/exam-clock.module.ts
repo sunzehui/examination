@@ -1,3 +1,4 @@
+import { redisCfg } from '@/config/database';
 import { Module } from '@nestjs/common';
 import { ExamClockService } from './exam-clock.service';
 import { ExamClockGateway } from './exam-clock.gateway';
@@ -18,10 +19,7 @@ import { RedisModule } from 'nestjs-redis';
     BullModule.registerQueue({
       name: 'exam',
     }),
-    RedisModule.register({
-      host: 'localhost',
-      port: 6379,
-    }),
+    RedisModule.register(redisCfg),
   ],
   providers: [ExamClockGateway, ExamClockService, ExamProcessor],
 })

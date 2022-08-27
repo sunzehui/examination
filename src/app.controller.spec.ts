@@ -2,14 +2,14 @@ import { Test, TestingModule } from '@nestjs/testing';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import connectionCfg from '@/config/database';
+import {mysqlCfg} from '@/config/database';
 
 describe('AppController', () => {
   let appController: AppController;
   let app: TestingModule;
   beforeEach(async () => {
     app = await Test.createTestingModule({
-      imports: [TypeOrmModule.forRoot({ ...connectionCfg, entities: [] })],
+      imports: [TypeOrmModule.forRoot({ ...mysqlCfg, entities: [] })],
       controllers: [AppController],
       providers: [AppService],
     }).compile();

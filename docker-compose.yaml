@@ -1,0 +1,56 @@
+version: '3.0'
+volumes:
+  app-volume: {}
+services:
+  redis:
+    container_name: redis
+    image: daocloud.io/library/redis # 使用官方镜像
+    restart: on-failure
+    ports:
+      - 6379:6379
+    deploy:
+      resources:
+        limits:
+          cpus: '0.50'
+          memory: 500M
+    volumes:
+      - ./src/config/redis.conf:/usr/local/etc/redis/redis.conf
+    # command: redis-server /usr/local/etc/redis/redis.conf
+
+  mysql:
+    container_name: mysql
+    image: daocloud.io/library/mysql:5.7 # 使用官方镜像
+    restart: on-failure
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456 # root用户密码
+    volumes:
+      - ./src/config/sql:/docker-entrypoint-initdb.d/
+    ports:
+      - 3307:3306
+  website:
+    container_name: nginx
+    image: daocloud.io/library/nginx:latest # 使用官方镜像
+    ports:
+      - 3000:80
+    # 挂载目录
+    volumes:
+      - ./vhosts.conf:/etc/nginx/conf.d/default.conf
+      - app-volume:/usr/share/nginx/html
+
+  server:
+    # 用来指定一个包含Dockerfile文件的路径。一般是当前目录. 。Fig将build并生成一个随机命名的镜像
+    build: .
+    # 镜像
+    image: nest-server:v0.1
+    # 容器名称
+    container_name: nest-server
+    # 指定与部署和运行服务相关的配置（restart: always关机或者重启docker同时重启容器）
+    restart: always
+    ports:
+      - 3001:3000
+    depends_on:
+      - mysql
+      - redis
+      - website
+    volumes:
+      - app-volume:/frontend-build/dist

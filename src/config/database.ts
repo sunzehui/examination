@@ -1,14 +1,17 @@
 import { DataSourceOptions } from 'typeorm';
-const ormCfg = {
+const mysqlCfg = {
   type: 'mysql',
-  host: 'localhost',
+  host: 'mysql',
   port: 3306,
   username: 'root',
-  password: 'sunzehui',
-  database: 'test2',
+  password: '123456',
+  database: 'exam',
   entities: ['dist/**/*.entity{.ts,.js}'],
   synchronize: true,
   datestrings: true,
 } as DataSourceOptions;
-
-export default ormCfg;
+const redisCfg = {
+  host: 'redis',
+  port: 6379,
+};
+export { mysqlCfg, redisCfg };
