@@ -17,7 +17,9 @@ import { BullModule } from '@nestjs/bull';
 import { ServeStaticModule } from '@nestjs/serve-static';
 import { join } from 'path';
 import { RedisModule } from 'nestjs-redis';
-export const staticRoutePath = join(__dirname, '..', 'static');
+import { pinoHttpOption } from '@/common/logger/config';
+import { LoggerModule } from 'nestjs-pino';
+export const staticRoutePath = join(__dirname, '..', '..', 'static');
 @Module({
   imports: [
     TypeOrmModule.forRoot(connectionCfg),
@@ -42,6 +44,9 @@ export const staticRoutePath = join(__dirname, '..', 'static');
       serveStaticOptions: {
         extensions: ['jpg', 'jpeg', 'png', 'gif'],
       },
+    }),
+    LoggerModule.forRoot({
+      pinoHttp: pinoHttpOption(),
     }),
     UserModule,
     AuthModule,
