@@ -5,7 +5,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { UserModule } from '@/common/module/user/user.module';
 import { AuthModule } from './common/module/auth/auth.module';
-import { ConfigModule } from '@nestjs/config';
+import { ConfigModule, ConfigService } from '@nestjs/config';
 import { ClassesModule } from './classes/classes.module';
 import { ExamPaperModule } from './exam-paper/exam-paper.module';
 import { QuestionModule } from './question/question.module';
@@ -39,8 +39,12 @@ export const staticRoutePath = join(__dirname, '..', '..', 'static');
         extensions: ['jpg', 'jpeg', 'png', 'gif'],
       },
     }),
-    LoggerModule.forRoot({
-      pinoHttp: pinoHttpOption(),
+    LoggerModule.forRootAsync({
+      imports: [ConfigModule],
+      inject: [ConfigService],
+      useFactory: async (configService: ConfigService) => {
+        return { pinoHttp: pinoHttpOption(configService.get('NODE_ENV')) };
+      },
     }),
     UserModule,
     AuthModule,

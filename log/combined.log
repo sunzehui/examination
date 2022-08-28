@@ -1,0 +1,823 @@
+INFO [2022-08-28 06:01:19.313 +0000] (14073 on 192.168.1.13): ExamClockGateway subscribed to the "findAllExamClock" message
+    context: "WebSocketsController"
+INFO [2022-08-28 06:01:19.313 +0000] (14073 on 192.168.1.13): ExamClockGateway subscribed to the "enterExamRoom" message
+    context: "WebSocketsController"
+INFO [2022-08-28 06:01:19.313 +0000] (14073 on 192.168.1.13): ExamClockGateway subscribed to the "userAnswerRecord" message
+    context: "WebSocketsController"
+INFO [2022-08-28 06:01:19.313 +0000] (14073 on 192.168.1.13): ExamClockGateway subscribed to the "forceSubmitPaper" message
+    context: "WebSocketsController"
+INFO [2022-08-28 06:01:19.319 +0000] (14073 on 192.168.1.13): AppController {/api}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.322 +0000] (14073 on 192.168.1.13): Mapped {/api, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.322 +0000] (14073 on 192.168.1.13): UserController {/api/user}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.323 +0000] (14073 on 192.168.1.13): Mapped {/api/user/register, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.323 +0000] (14073 on 192.168.1.13): Mapped {/api/user/hello, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.323 +0000] (14073 on 192.168.1.13): Mapped {/api/user/student, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.324 +0000] (14073 on 192.168.1.13): Mapped {/api/user/type, PATCH} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.324 +0000] (14073 on 192.168.1.13): Mapped {/api/user, PATCH} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.324 +0000] (14073 on 192.168.1.13): Mapped {/api/user/me, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.325 +0000] (14073 on 192.168.1.13): Mapped {/api/user/avatar, PATCH} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.325 +0000] (14073 on 192.168.1.13): AuthController {/api/auth}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.326 +0000] (14073 on 192.168.1.13): Mapped {/api/auth/login, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.326 +0000] (14073 on 192.168.1.13): Mapped {/api/auth/profile, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.326 +0000] (14073 on 192.168.1.13): ClassesController {/api/classes}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.326 +0000] (14073 on 192.168.1.13): Mapped {/api/classes, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.326 +0000] (14073 on 192.168.1.13): Mapped {/api/classes/mine, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.326 +0000] (14073 on 192.168.1.13): Mapped {/api/classes/anonymous, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.326 +0000] (14073 on 192.168.1.13): Mapped {/api/classes, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.327 +0000] (14073 on 192.168.1.13): Mapped {/api/classes/:id/student, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.327 +0000] (14073 on 192.168.1.13): Mapped {/api/classes/:id, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.327 +0000] (14073 on 192.168.1.13): Mapped {/api/classes/:id, PATCH} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.327 +0000] (14073 on 192.168.1.13): Mapped {/api/classes/join/:id, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.327 +0000] (14073 on 192.168.1.13): ExamPaperController {/api/exam-paper}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.327 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper/mine, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper/:id, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper/:id/submit, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper/:id/question/remove, PATCH} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper/:id/question/add, PATCH} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-paper/:id, DELETE} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): QuestionController {/api/question}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/question, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/question/:id, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): ExamRecordController {/api/exam-record}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-record/enter, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-record, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-record, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-record/statistic, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.328 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-record/classes/:id, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.329 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-record/:id, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.329 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-record/:id, DELETE} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.329 +0000] (14073 on 192.168.1.13): ExamRoomController {/api/exam-room}:
+    context: "RoutesResolver"
+INFO [2022-08-28 06:01:19.329 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-room, POST} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.329 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-room, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.329 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-room/:id, GET} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.329 +0000] (14073 on 192.168.1.13): Mapped {/api/exam-room/:id, DELETE} route
+    context: "RouterExplorer"
+INFO [2022-08-28 06:01:19.334 +0000] (14073 on 192.168.1.13): Nest application successfully started
+    context: "NestApplication"
+ERROR [2022-08-28 06:01:32.820 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/register",
+      "params": {
+        "0": "register"
+      },
+      "query": {},
+      "headers": {
+        "host": "localhost:3000",
+        "connection": "keep-alive",
+        "cache-control": "max-age=0",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "same-origin",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "if-none-match": "\"5fd8c14a-264\"",
+        "if-modified-since": "Tue, 15 Dec 2020 13:59:38 GMT"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 404
+    }
+    响应时间(ms): 5
+ERROR [2022-08-28 06:01:37.896 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/",
+      "params": {
+        "0": ""
+      },
+      "query": {},
+      "headers": {
+        "host": "localhost:3000",
+        "connection": "keep-alive",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "upgrade-insecure-requests": "1",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "accept": "text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8,application/signed-exchange;v=b3;q=0.9",
+        "sec-fetch-site": "none",
+        "sec-fetch-mode": "navigate",
+        "sec-fetch-user": "?1",
+        "sec-fetch-dest": "document",
+        "accept-encoding": "gzip, deflate, br",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "if-none-match": "W/\"630b0261-ab9\"",
+        "if-modified-since": "Sun, 28 Aug 2022 05:51:29 GMT"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 404
+    }
+    响应时间(ms): 2
+INFO [2022-08-28 06:03:13.402 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "POST",
+      "url": "/api/auth/login",
+      "params": {
+        "0": "api/auth/login"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/login",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "origin": "http://localhost:8080",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjEyLCJyb2xlIjowLCJpYXQiOjE2NjE1NjA4MjcsImV4cCI6MTY2MTU5NjgyN30.0iF-ZXA3KB5xhFvpYEFnW2vhQGfL_eLiPiGawNo5838",
+        "content-type": "application/json",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "content-length": "45",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {
+        "username": "sunzehui",
+        "password": "sunzehui"
+      }
+    }
+    响应信息: {
+      "status": 200
+    }
+    响应时间(ms): 98
+ERROR [2022-08-28 06:03:14.639 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/static/default_avatar.webp",
+      "params": {
+        "0": "static/default_avatar.webp"
+      },
+      "query": {},
+      "headers": {
+        "if-modified-since": "Fri, 05 Aug 2022 06:18:54 GMT",
+        "if-none-match": "W/\"72e-1826ca822c2\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "image",
+        "sec-fetch-mode": "no-cors",
+        "sec-fetch-site": "same-origin",
+        "accept": "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 4
+INFO [2022-08-28 06:03:14.744 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/mine",
+      "params": {
+        "0": "api/classes/mine"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"78-gyoxeT2Q3HH1MmmOv/O0Lq4G6RQ\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 200
+    }
+    响应时间(ms): 87
+INFO [2022-08-28 06:03:14.789 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/exam-room",
+      "params": {
+        "0": "api/exam-room"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"514-nWgMxV+3zXU9ozgV9mvmMv/PnBo\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 200
+    }
+    响应时间(ms): 94
+INFO [2022-08-28 06:03:14.790 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/user/me",
+      "params": {
+        "0": "api/user/me"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"12c-pQnOe2PgHvz/YKnLrK3k2wcPtyc\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 200
+    }
+    响应时间(ms): 127
+ERROR [2022-08-28 06:03:24.364 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/static/default_avatar.webp",
+      "params": {
+        "0": "static/default_avatar.webp"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "image",
+        "sec-fetch-mode": "no-cors",
+        "sec-fetch-site": "same-origin",
+        "accept": "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "if-modified-since": "Fri, 05 Aug 2022 06:18:54 GMT",
+        "if-none-match": "W/\"72e-1826ca822c2\"",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 1
+ERROR [2022-08-28 06:03:24.517 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/user/me",
+      "params": {
+        "0": "api/user/me"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"592-M2XbqkstOT3MX5Dua5SRDjIbDNs\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 13
+ERROR [2022-08-28 06:03:24.530 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/exam-room",
+      "params": {
+        "0": "api/exam-room"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"801-BIb+0H4wd9AyfNqKteT2+QwV11w\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 11
+ERROR [2022-08-28 06:03:24.535 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/mine",
+      "params": {
+        "0": "api/classes/mine"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"4e1-HvtV79DFq9amSCLf+NaHRM+Ehs8\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-panel",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 3
+ERROR [2022-08-28 06:03:26.117 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/user/me",
+      "params": {
+        "0": "api/user/me"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"592-M2XbqkstOT3MX5Dua5SRDjIbDNs\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/mine",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 7
+ERROR [2022-08-28 06:03:46.464 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/static/default_avatar.webp",
+      "params": {
+        "0": "static/default_avatar.webp"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/mine",
+        "sec-fetch-dest": "image",
+        "sec-fetch-mode": "no-cors",
+        "sec-fetch-site": "same-origin",
+        "accept": "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "if-modified-since": "Fri, 05 Aug 2022 06:18:54 GMT",
+        "if-none-match": "W/\"72e-1826ca822c2\"",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 3
+ERROR [2022-08-28 06:03:46.532 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/user/me",
+      "params": {
+        "0": "api/user/me"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"592-M2XbqkstOT3MX5Dua5SRDjIbDNs\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/mine",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 10
+ERROR [2022-08-28 06:03:46.540 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/user/me",
+      "params": {
+        "0": "api/user/me"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"592-M2XbqkstOT3MX5Dua5SRDjIbDNs\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/mine",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpIiwiaWQiOjIsInJvbGUiOjAsImlhdCI6MTY2MTY2NjU5MywiZXhwIjoxNjYxNzAyNTkzfQ.UzfIe7WkhOyaZ0nNWngn4z6ksCYG-REaeqvAIP3T1Ws",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 6
+ERROR [2022-08-28 06:03:52.584 +0000] (14073 on 192.168.1.13): ENOENT: no such file or directory, stat '/Users/sunzehui/Documents/project/examination-backend/static/index.html'
+    请求信息: {
+      "method": "GET",
+      "url": "/static/default_avatar.png",
+      "params": {
+        "0": "static/default_avatar.png"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/mine",
+        "sec-fetch-dest": "image",
+        "sec-fetch-mode": "no-cors",
+        "sec-fetch-site": "same-origin",
+        "accept": "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    context: "ExceptionsHandler"
+ERROR [2022-08-28 06:03:52.584 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/static/default_avatar.png",
+      "params": {
+        "0": "static/default_avatar.png"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/mine",
+        "sec-fetch-dest": "image",
+        "sec-fetch-mode": "no-cors",
+        "sec-fetch-site": "same-origin",
+        "accept": "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 404
+    }
+    响应时间(ms): 10
+INFO [2022-08-28 06:03:54.371 +0000] (14073 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/anonymous",
+      "params": {
+        "0": "api/classes/anonymous"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/register",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer undefined",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 200
+    }
+    响应时间(ms): 6
+ERROR [2022-08-28 06:04:05.835 +0000] (14073 on 192.168.1.13): ER_BAD_NULL_ERROR: Column 'classesId' cannot be null
+    请求信息: {
+      "method": "POST",
+      "url": "/api/user/register",
+      "params": {
+        "0": "api/user/register"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/register",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "origin": "http://localhost:8080",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer undefined",
+        "content-type": "application/json",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "content-length": "103",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {
+        "username": "2333sunzehui",
+        "password": "2333sunzehui",
+        "nickname": "2333sunzehui",
+        "classes": null,
+        "role": 1
+      }
+    }
+    context: "ExceptionsHandler"
+    err: {
+      "type": "Error",
+      "message": "ER_BAD_NULL_ERROR: Column 'classesId' cannot be null",
+      "stack":
+          QueryFailedError: ER_BAD_NULL_ERROR: Column 'classesId' cannot be null
+              at Query.<anonymous> (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/registry.npmmirror.com+typeorm@0.3.7_ts-node@10.8.2/src/driver/mysql/MysqlQueryRunner.ts:222:33)
+              at Query.<anonymous> (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/Connection.js:526:10)
+              at Query._callback (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/Connection.js:488:16)
+              at Query.Sequence.end (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/protocol/sequences/Sequence.js:83:24)
+              at Query.ErrorPacket (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/protocol/sequences/Query.js:92:8)
+              at Protocol._parsePacket (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/protocol/Protocol.js:291:23)
+              at Parser._parsePacket (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/protocol/Parser.js:433:10)
+              at Parser.write (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/protocol/Parser.js:43:10)
+              at Protocol.write (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/protocol/Protocol.js:38:16)
+              at Socket.<anonymous> (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/mysql@2.18.1/node_modules/mysql/lib/Connection.js:88:28)
+    }
+ERROR [2022-08-28 06:04:05.835 +0000] (14073 on 192.168.1.13): request errored
+    请求信息: {
+      "method": "POST",
+      "url": "/api/user/register",
+      "params": {
+        "0": "api/user/register"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/register",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "origin": "http://localhost:8080",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer undefined",
+        "content-type": "application/json",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "content-length": "103",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {
+        "username": "2333sunzehui",
+        "password": "2333sunzehui",
+        "nickname": "2333sunzehui",
+        "classes": null,
+        "role": 1
+      }
+    }
+    响应信息: {
+      "status": 500
+    }
+    错误信息: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack": "Error: failed with status code 500\n    at ServerResponse.onResFinished (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/registry.npmmirror.com+pino-http@7.1.0/node_modules/pino-http/logger.js:115:40)\n    at ServerResponse.emit (node:events:539:35)\n    at onFinish (node:_http_outgoing:830:10)\n    at callback (node:internal/streams/writable:552:21)\n    at afterWrite (node:internal/streams/writable:497:5)\n    at afterWriteTick (node:internal/streams/writable:484:10)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)"
+    }
+    响应时间(ms): 123
+ERROR [2022-08-28 06:04:54.567 +0000] (15189 on 192.168.1.13): request errored
+    请求信息: {
+      "method": "POST",
+      "url": "/api/user/register",
+      "params": {
+        "0": "api/user/register"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/register",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "origin": "http://localhost:8080",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer undefined",
+        "content-type": "application/json",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "content-length": "103",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {
+        "username": "2333sunzehui",
+        "password": "2333sunzehui",
+        "nickname": "2333sunzehui",
+        "classes": null,
+        "role": 1
+      }
+    }
+    响应信息: {
+      "status": 500
+    }
+    错误信息: {
+      "type": "Error",
+      "message": "failed with status code 500",
+      "stack": "Error: failed with status code 500\n    at ServerResponse.onResFinished (/Users/sunzehui/Documents/project/examination-backend/node_modules/.pnpm/registry.npmmirror.com+pino-http@7.1.0/node_modules/pino-http/logger.js:115:40)\n    at ServerResponse.emit (node:events:539:35)\n    at onFinish (node:_http_outgoing:830:10)\n    at callback (node:internal/streams/writable:552:21)\n    at afterWrite (node:internal/streams/writable:497:5)\n    at afterWriteTick (node:internal/streams/writable:484:10)\n    at processTicksAndRejections (node:internal/process/task_queues:82:21)"
+    }
+    响应时间(ms): 107

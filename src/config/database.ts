@@ -1,7 +1,8 @@
 import { DataSourceOptions } from 'typeorm';
+
 const mysqlCfg = {
   type: 'mysql',
-  host: 'mysql',
+  host: process.env.NODE_ENV == 'dev' ? 'localhost' : 'mysql',
   port: 3306,
   username: 'root',
   password: '123456',
@@ -11,7 +12,7 @@ const mysqlCfg = {
   datestrings: true,
 } as DataSourceOptions;
 const redisCfg = {
-  host: 'redis',
+  host: process.env.NODE_ENV == 'dev' ? 'localhost' : 'redis',
   port: 6379,
 };
 export { mysqlCfg, redisCfg };

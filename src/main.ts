@@ -1,3 +1,4 @@
+import { ConfigService } from '@nestjs/config';
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { ValidationPipe } from '@nestjs/common';
@@ -15,9 +16,10 @@ async function bootstrap() {
     .build();
   const document = SwaggerModule.createDocument(app, config);
   SwaggerModule.setup('doc', app, document);
-  app.useLogger(app.get(Logger));
-
-  app.setGlobalPrefix('api');
+  // app.useLogger(app.get(Logger));
+  const configService = app.get(ConfigService);
+  const mode = configService.get('NODE_ENV');
+  mode === 'dev' ? app.setGlobalPrefix('api') : '';
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
   console.log('server running at http://localhost:3000');
