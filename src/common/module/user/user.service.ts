@@ -29,15 +29,17 @@ export class UserService {
     const username = createUserDto.username;
     const password = createUserDto.password;
     const nickname = createUserDto.nickname;
-    const classesEntity = new Classes();
-    classesEntity.id = createUserDto.classes;
 
     const userDO = {
       username,
       password,
       nickname,
-      join_classes: [classesEntity],
     };
+    if (createUserDto.classes) {
+      const classesEntity = new Classes();
+      classesEntity.id = createUserDto.classes;
+      userDO['join_classes'] = classesEntity;
+    }
     try {
       const user = this.repository.create(userDO);
       return await this.repository.save(user);
