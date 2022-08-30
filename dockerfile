@@ -9,7 +9,7 @@ RUN yarn config set registry https://registry.npm.taobao.org/
 WORKDIR /frontend-build
 RUN git clone https://github.com/sunzehui/vue3-examination.git ./
 RUN yarn
-RUN yarn build
+RUN node --max_old_space_size=2000 ./node_modules/vite/bin/vite.js build
 RUN rm -rf ./node_modules
 
 WORKDIR /backend-build

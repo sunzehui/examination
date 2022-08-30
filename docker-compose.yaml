@@ -1,41 +1,48 @@
 version: '3.0'
 volumes:
+  # 自定义共享卷，方便为nginx提供前端编译文件
   app-volume: {}
 services:
   redis:
     container_name: redis
-    image: daocloud.io/library/redis # 使用官方镜像
+    image: daocloud.io/library/redis
     restart: on-failure
     deploy:
       resources:
+        # 内存及cpu限制
         limits:
           cpus: '0.50'
           memory: 500M
+    # 使用项目提供的redis配置文件
     volumes:
       - ./src/config/redis.conf:/usr/local/etc/redis/redis.conf
     command: redis-server /usr/local/etc/redis/redis.conf
 
   mysql:
     container_name: mysql
-    image: daocloud.io/library/mysql:5.7 # 使用官方镜像
+    image: daocloud.io/library/mysql:5.7
     restart: on-failure
     environment:
       - MYSQL_ROOT_PASSWORD=123456 # root用户密码
     volumes:
+      # 第一次构建执行的sql脚本
       - ./src/config/sql:/docker-entrypoint-initdb.d/
-  website:
+      # mysql配置文件
+      - ./src/config/my.cnf:/etc/my.cnf
+  nginx:
     container_name: nginx
-    image: daocloud.io/library/nginx:latest # 使用官方镜像
+    image: daocloud.io/library/nginx:latest
     restart: on-failure
     ports:
       - 3000:80
-    # 挂载目录
     volumes:
+      # nginx配置文件
       - ./vhosts.conf:/etc/nginx/conf.d/default.conf
+      # 共享前端打包目录
       - app-volume:/usr/share/nginx/exam
 
   server:
-    # 用来指定一个包含Dockerfile文件的路径。一般是当前目录. 。Fig将build并生成一个随机命名的镜像
+    # 用来指定一个包含Dockerfile文件的路径。一般是当前目录. 将build并生成一个随机命名的镜像
     build: .
     # 镜像
     image: nest-server:v0.1
@@ -48,4 +55,5 @@ services:
       - redis
       - website
     volumes:
+      # 共享前端打包目录
       - app-volume:/frontend-build/dist
