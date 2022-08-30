@@ -15,9 +15,15 @@ export class ClassesService {
   ) {}
 
   create(createClassDto: CreateClassDto, userId) {
+    const userEntities = createClassDto.students.map(userId=>{
+      const entity = new User();
+      entity.id= userId;
+      return entity;
+    })
     const classesEntity = this.repo.create({
       created_by: { id: userId },
       name: createClassDto.name,
+      users:userEntities,
     });
     return this.repo.save(classesEntity);
   }
@@ -48,9 +54,13 @@ export class ClassesService {
     });
   }
 
-  findStudent(id: number) {
+  findStudent(id?: number) {
+    const query = {}
+    if(id){
+      query['id'] = id;
+    }
     return this.repo.findOne({
-      where: { id },
+      where: query,
       relations: ['users', 'created_by'],
     });
   }

@@ -64,6 +64,12 @@ export class ClassesController {
     return ResultData.ok(result);
   }
 
+  @Get('student')
+  @Auth(Role.teacher)
+  async findAllStudent(){
+    const result = await this.classesService.findStudent();
+    return ResultData.ok(result)
+  }
   // 查询所有班级信息
   @Get()
   @ApiResponse({
@@ -93,6 +99,8 @@ export class ClassesController {
     const result = await this.classesService.findStudent(+id);
     return ResultData.ok(result);
   }
+
+ 
 
   // 查询本班信息
   @Get(':id')
