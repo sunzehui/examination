@@ -53,7 +53,7 @@ services:
     depends_on:
       - mysql
       - redis
-      - website
+      - nginx
     volumes:
       # 共享前端打包目录
       - app-volume:/frontend-build/dist
