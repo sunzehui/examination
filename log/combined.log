@@ -37844,3 +37844,515 @@ ERROR [2022-08-30 07:48:00.116 +0000] (38871 on 192.168.1.13): request completed
       "status": 304
     }
     响应时间(ms): 9
+ERROR [2022-08-30 08:02:34.950 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/static/default_avatar.webp",
+      "params": {
+        "0": "static/default_avatar.webp"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "image",
+        "sec-fetch-mode": "no-cors",
+        "sec-fetch-site": "same-origin",
+        "accept": "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "if-modified-since": "Fri, 05 Aug 2022 06:18:54 GMT",
+        "if-none-match": "W/\"72e-1826ca822c2\"",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 12
+ERROR [2022-08-30 08:02:35.150 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/mine",
+      "params": {
+        "0": "api/classes/mine"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"149a-rTsld5/fu7uV5AjGG0Tc/IPh55o\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 32
+ERROR [2022-08-30 08:02:35.158 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/user/me",
+      "params": {
+        "0": "api/user/me"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1597-5kEByJatuOm+3zHbY8oSr5ZqXdQ\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 85
+ERROR [2022-08-30 08:02:35.193 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/1/student",
+      "params": {
+        "0": "api/classes/1/student"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1a6-zx6l8ZUwTVFBfRihoxO8LCdpPdI\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 16
+ERROR [2022-08-30 08:02:35.204 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/1/student",
+      "params": {
+        "0": "api/classes/1/student"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1a6-zx6l8ZUwTVFBfRihoxO8LCdpPdI\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 7
+INFO [2022-08-30 08:02:48.434 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/anonymous",
+      "params": {
+        "0": "api/classes/anonymous"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"2b-Osx1fYmde/YQIGxOMe19kHIVEHg\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/register",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 200
+    }
+    响应时间(ms): 15
+ERROR [2022-08-30 08:03:19.350 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/static/default_avatar.webp",
+      "params": {
+        "0": "static/default_avatar.webp"
+      },
+      "query": {},
+      "headers": {
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "image",
+        "sec-fetch-mode": "no-cors",
+        "sec-fetch-site": "same-origin",
+        "accept": "image/webp,image/apng,image/svg+xml,image/*,*/*;q=0.8",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "if-modified-since": "Fri, 05 Aug 2022 06:18:54 GMT",
+        "if-none-match": "W/\"72e-1826ca822c2\"",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 7
+ERROR [2022-08-30 08:03:19.477 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/mine",
+      "params": {
+        "0": "api/classes/mine"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"149a-rTsld5/fu7uV5AjGG0Tc/IPh55o\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 14
+ERROR [2022-08-30 08:03:19.484 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/user/me",
+      "params": {
+        "0": "api/user/me"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1597-5kEByJatuOm+3zHbY8oSr5ZqXdQ\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 28
+ERROR [2022-08-30 08:03:20.012 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/1/student",
+      "params": {
+        "0": "api/classes/1/student"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1a6-zx6l8ZUwTVFBfRihoxO8LCdpPdI\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 39
+ERROR [2022-08-30 08:03:20.044 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/1/student",
+      "params": {
+        "0": "api/classes/1/student"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1a6-zx6l8ZUwTVFBfRihoxO8LCdpPdI\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 16
+ERROR [2022-08-30 08:03:25.545 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/exam-paper/mine",
+      "params": {
+        "0": "api/exam-paper/mine"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"41b9-+6kU2gLo3EGTrKOfF3HiDYiDUbg\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-paper/list",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 9
+ERROR [2022-08-30 08:03:26.170 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/exam-record",
+      "params": {
+        "0": "api/exam-record"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"130-ihKYcDv8jUHv1PeQX28iOvIoc2Q\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/exam-query/score",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 8
+ERROR [2022-08-30 08:03:26.663 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/mine",
+      "params": {
+        "0": "api/classes/mine"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"149a-rTsld5/fu7uV5AjGG0Tc/IPh55o\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 5
+ERROR [2022-08-30 08:03:26.675 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/1/student",
+      "params": {
+        "0": "api/classes/1/student"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1a6-zx6l8ZUwTVFBfRihoxO8LCdpPdI\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 4
+ERROR [2022-08-30 08:03:26.681 +0000] (42650 on 192.168.1.13): request completed
+    请求信息: {
+      "method": "GET",
+      "url": "/api/classes/1/student",
+      "params": {
+        "0": "api/classes/1/student"
+      },
+      "query": {},
+      "headers": {
+        "if-none-match": "W/\"1a6-zx6l8ZUwTVFBfRihoxO8LCdpPdI\"",
+        "cookie": "session=MTY2MTA4MTk3NHxEdi1IQkFFQ180Z0FBUkFCRUFBQUhfLUlBQUVHYzNSeWFXNW5EQWtBQjNWelpYSXRhV1FEYVc1MEJBTUFfOG89fBWNEZBJPuBfGtm-iNXKPOy_h2bi6IXjXypfjd1KAsIH",
+        "accept-language": "zh-CN,zh;q=0.9,en;q=0.8,en-GB;q=0.7,en-US;q=0.6",
+        "accept-encoding": "gzip, deflate, br",
+        "referer": "http://localhost:8080/panel/class-panel/info",
+        "sec-fetch-dest": "empty",
+        "sec-fetch-mode": "cors",
+        "sec-fetch-site": "same-origin",
+        "sec-ch-ua-platform": "\"macOS\"",
+        "user-agent": "Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/104.0.5112.102 Safari/537.36 Edg/104.0.1293.70",
+        "sec-ch-ua-mobile": "?0",
+        "authorization": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InN1bnplaHVpX3QiLCJpZCI6Mywicm9sZSI6MSwiaWF0IjoxNjYxODQyNjE3LCJleHAiOjE2NjE4Nzg2MTd9.xTC1CS_goDC2vzgrhalwvpoZQ_G2x9dYGLaPZCgujnw",
+        "accept": "application/json",
+        "sec-ch-ua": "\"Chromium\";v=\"104\", \" Not A;Brand\";v=\"99\", \"Microsoft Edge\";v=\"104\"",
+        "connection": "close",
+        "host": "localhost:3000"
+      },
+      "body": {}
+    }
+    响应信息: {
+      "status": 304
+    }
+    响应时间(ms): 4

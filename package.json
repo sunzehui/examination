@@ -14,6 +14,7 @@
     "test:e2e": "jest --config ./test/jest-e2e.json",
     "postinstall": "patch-package"
   },
+  "bin":"dist/src/main.js",
   "dependencies": {
     "@nestjs/bull": "^0.6.0",
     "@nestjs/cli": "^9.0.0",

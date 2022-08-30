@@ -34,7 +34,7 @@ export class UserService {
       username,
       password,
       nickname,
-      role:createUserDto.role
+      user_type: createUserDto.role
     };
     if (createUserDto.classes) {
       const classesEntity = new Classes();
