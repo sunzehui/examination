@@ -17,7 +17,7 @@ import { queryFailedGuard } from '@/common/utils/tools';
 import { staticRoutePath } from '@/app.module';
 import { Classes } from '@/classes/entities/classes.entity';
 import { UpdateUserDto } from '@/common/module/user/dto/update-user.dto';
-
+import * as isNil from 'lodash/isNil'
 @Injectable()
 export class UserService {
   constructor(
@@ -29,17 +29,16 @@ export class UserService {
     const username = createUserDto.username;
     const password = createUserDto.password;
     const nickname = createUserDto.nickname;
-
     const userDO = {
       username,
       password,
       nickname,
       user_type: createUserDto.role
     };
-    if (createUserDto.classes) {
+    if (!isNil( createUserDto.classes)) {
       const classesEntity = new Classes();
       classesEntity.id = createUserDto.classes;
-      userDO['join_classes'] = classesEntity;
+      userDO['join_classes'] = [classesEntity];
     }
     try {
       const user = this.repository.create(userDO);
