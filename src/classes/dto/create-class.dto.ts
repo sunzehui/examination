@@ -1,5 +1,5 @@
-import { IsArray, IsNotEmpty } from "class-validator";
-import { ApiProperty } from "@nestjs/swagger";
+import { IsArray, IsNotEmpty, IsOptional } from 'class-validator';
+import { ApiProperty } from '@nestjs/swagger';
 
 export class CreateClassDto {
   @ApiProperty({ type: String })
@@ -7,5 +7,6 @@ export class CreateClassDto {
   name: string;
 
   @IsArray()
-  students: Array<number>
+  @IsOptional()
+  students: Array<number>;
 }

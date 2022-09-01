@@ -36,19 +36,19 @@ export class ExamRecordService {
 
   // 进入考场后保存一次，记录进入时间，计算考试用时
   async enterExamRoom(examRecordDto: ExamRecordDto, userId) {
-    console.log(examRecordDto);
     const examRoomEntity = new ExamRoom();
     examRoomEntity.id = examRecordDto.exam_room_id;
     const uEntity = new User();
     uEntity.id = userId;
+    console.log(examRecordDto);
     const examPaperEntity = await this.examPaperRepo.findOne({
-      where: { id: examRecordDto.exam_paper_id },
+      where: { id: examRecordDto.exam_room_id },
       relations: ['created_by'],
     });
     const teacher = examPaperEntity.created_by;
 
     const examRecordEntity = this.repo.create({
-      exam_paper: examPaperEntity,
+      // exam_paper: examPaperEntity,
       exam_room: examRoomEntity,
       user: uEntity,
       rel_teacher: teacher,
@@ -58,6 +58,8 @@ export class ExamRecordService {
 
   async create(examRecordDto: ExamRecordDto, userId) {
     const examRoomId = examRecordDto.exam_room_id;
+    const examPaperEntity = new ExamPaper();
+    examPaperEntity.id = examRecordDto.exam_paper_id;
     const updateQb = this.repo
       .createQueryBuilder('e_record')
       .where('examRoomId = :examRoomId', { examRoomId })
@@ -65,6 +67,7 @@ export class ExamRecordService {
       .update({
         score: examRecordDto.score,
         answer: examRecordDto.answer,
+        exam_paper: examPaperEntity,
         submit_time: dayjs().utc().format(),
       });
     return await updateQb.execute();
@@ -226,10 +229,6 @@ export class ExamRecordService {
     } catch (e) {
       console.log(e);
     }
-  }
-
-  remove(id: number) {
-    return `This action removes a #${id} examRecord`;
   }
 
   // 没有提交时间代表从未提交

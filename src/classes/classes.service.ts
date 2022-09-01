@@ -5,6 +5,7 @@ import { Repository } from 'typeorm';
 import { Classes } from '@/classes/entities/classes.entity';
 import { InjectRepository } from '@nestjs/typeorm';
 import * as _map from 'lodash/map';
+import * as _get from 'lodash/get';
 import { User } from '@/common/module/user/entities/user.entity';
 
 @Injectable()
@@ -15,15 +16,15 @@ export class ClassesService {
   ) {}
 
   create(createClassDto: CreateClassDto, userId) {
-    const userEntities = createClassDto.students.map(userId=>{
+    const userEntities = _get(createClassDto, 'students', []).map((userId) => {
       const entity = new User();
-      entity.id= userId;
+      entity.id = userId;
       return entity;
-    })
+    });
     const classesEntity = this.repo.create({
       created_by: { id: userId },
       name: createClassDto.name,
-      users:userEntities,
+      users: userEntities,
     });
     return this.repo.save(classesEntity);
   }
@@ -55,8 +56,8 @@ export class ClassesService {
   }
 
   findStudent(id?: number) {
-    const query = {}
-    if(id){
+    const query = {};
+    if (id) {
       query['id'] = id;
     }
     return this.repo.findOne({

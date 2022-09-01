@@ -29,12 +29,12 @@ export class ExamRecordController {
   async interExamRoom(
     @User('id') userId: string,
     @Query('room_id') exam_room_id: string,
-    @Query('paper_id') exam_paper_id: string,
+    // @Query('paper_id') exam_paper_id: string,
   ) {
     const result = await this.examRecordService.enterExamRoom(
       {
         exam_room_id: +exam_room_id,
-        exam_paper_id: +exam_paper_id,
+        // exam_paper_id: +exam_paper_id,
       },
       userId,
     );
@@ -77,10 +77,5 @@ export class ExamRecordController {
   async findOne(@Param('id') id: string) {
     const result = await this.examRecordService.findOne(+id);
     return ResultData.ok(result);
-  }
-
-  @Delete(':id')
-  remove(@Param('id') id: string) {
-    return this.examRecordService.remove(+id);
   }
 }

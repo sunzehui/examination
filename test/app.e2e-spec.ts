@@ -8,9 +8,11 @@ export enum QType {
   fill_blank,
 }
 dayjs.extend(utc);
-
+let baseURL = 'http://localhost:3000';
+const isDev = process.env.NODE_ENV;
+isDev ? (baseURL += '/api') : '';
 let requestApp = axios.create({
-  baseURL: 'http://localhost:3000/api',
+  baseURL,
 });
 const testResource = {
   teacher: null,
@@ -60,8 +62,9 @@ const testResource = {
 const useTokenRequest = async (user) => {
   const res = await requestApp.post('auth/login', user);
   const token = res.data.data.token.value;
+
   return axios.create({
-    baseURL: 'http://localhost:3000/api',
+    baseURL,
     headers: {
       Authorization: 'Bearer ' + token,
     },
@@ -77,12 +80,9 @@ describe('创建用户', () => {
       username: 'teacher' + random,
       password: 'teacher' + random,
       nickname: '小' + random,
+      role: 1,
     };
     await requestApp.post('user/register', teacher);
-    const request = await useTokenRequest(teacher);
-
-    await request.patch('/user/type?to_type=1');
-
     testResource.teacher = teacher;
   });
 
@@ -93,6 +93,7 @@ describe('创建用户', () => {
         username: 'student' + random,
         password: 'student' + random,
         nickname: '小' + random,
+        role: 0,
       };
     });
     const createStudentTask = studentList.map((s) => {
